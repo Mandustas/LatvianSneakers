@@ -1,38 +1,132 @@
-.App {
-  text-align: center;
+@media (max-width: 768px) {
+    .header-menu-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .header-soc-networks-item {
+        height: 30px !important;
+        width: 30px !important;
+    }
+    .header-soc-networks-container {
+        margin-top: 30px;
+        order: 1 !important;
+        justify-content: center !important;
+    }
+    .header-contacts-container {
+        margin-top: 30px;
+        order: 2 !important;
+        justify-content: center !important;
+    }
+    .header-contacts-icon-img {
+        display: none;
+    }
+    .header-contacts-address {
+        color: lightgray;
+        padding: 10px;
+        font-size: 16px;
+    }
+    .header-contacts-line-containter {
+        justify-content: center;
+    }
+    .dropdown {
+        justify-content: center !important;
+    }
+    .header-menu {
+        order: 4 !important;
+        justify-content: center !important;
+    }
+    .header-menu-item {
+        text-align: center;
+        padding: 20px;
+        font-size: 20px !important;
+    }
+    .header-lang-wrapper-desctop{
+        display: none!important;
+    }
+    .header-lang-wrapper-mobile{
+        display: flex!important;
+    }
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+    font-family: "Montserrat", sans-serif !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header-wrapper {
+    background-color: #161616 !important;
+}
+.header-container {
+    width: 1110px;
+    margin: auto;
+    color: white !important;
+}
+.header-menu-container{
+    display: flex;
+    justify-content: space-around;
+    width: 100%; 
+}
+.header-menu {
+}
+.navbar-toggler:focus {
+    text-decoration: none;
+    outline: 0;
+    box-shadow: none;
+}
+.navbar-toggler {
+    border: none;
+    box-shadow: none;
+    color: white !important;
+}
+.header-menu-item {
+    color: white !important;
+    font-weight: 700 !important;
+    font-size: 12px;
+    font-style: normal;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.header-soc-networks-container {
+    display: flex;
 }
 
-.App-link {
-  color: #61dafb;
+.header-soc-networks-item {
+    margin: 8px;
+    height: 19px;
+    width: 19px;
+    cursor: pointer;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.header-contacts-container {
+    font-weight: 500;
+    font-size: 12px;
+}
+.header-contacts-line-containter {
+    display: flex;
+    align-items: center;
+}
+.header-contacts-icon-img {
+}
+.header-contacts-address {
+    margin-left: 10px;
+}
+.header-lang-wrapper-mobile{
+    display: none;
+}
+.header-lang-wrapper-desctop{
+}
+.header-lang-container {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.header-lang-actual {
+    color: lightgray;
+    font-size: 13px;
+    font-weight: 400;
+}
+.header-langmenu-item {
+    display: flex;
+    align-items: center;
+}
+.header-langmenu-item-country {
+    margin-left: 10px;
 }
