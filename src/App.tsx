@@ -2,12 +2,23 @@ import React from 'react'
 import "./App.css"
 import Footer from './components/Footer'
 import Header from './components/Header'
+import HeaderBrends from './components/HeaderBrends'
+import Home from './components/Home'
+import Product from './components/Product'
 
 function App() {
   return (
     <div>
       <Header></Header>
-      <div className="" style={{ height: "600px" }}></div>
+      <HeaderBrends></HeaderBrends>
+      <div className="app-wrapper">
+        <div className="app-container">
+          {/* <Home></Home> */}
+          <Product></Product>
+        </div>
+      </div>
+
+
       <Footer></Footer>
     </div>
   )

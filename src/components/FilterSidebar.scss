@@ -1,0 +1,31 @@
+.filter-sidebar-wrapper {
+    // background-color: white!important;
+    #sidebar {
+        background-color: white;
+        overflow: auto;
+        .filter-sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #212121;
+            .filter-sidebar-header-title {
+                //styleName: H2 MB;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 17px;
+                letter-spacing: 0em;
+                text-align: left;
+                color: white;
+                padding: 24px;
+            }
+            .filter-sidebar-header-dismiss {
+                border-left: solid 1px darkgray;
+                font-size: 14px;
+                color: white;
+                padding: 22px 30px;
+                cursor: pointer;
+            }
+        }
+    }
+}

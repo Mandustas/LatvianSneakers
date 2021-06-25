@@ -1,0 +1,164 @@
+.product-wrapper {
+    margin-top: 60px;
+    @media (max-width: 992px) {
+        margin-top: 30px;
+    }
+    .product-container {
+        .product-gallery-desctop {
+            @media (max-width: 992px) {
+                display: none;
+            }
+        }
+        .product-gallery-mobile {
+            display: none;
+            @media (max-width: 992px) {
+                display: block;
+            }
+        }
+        .product-title {
+            font-size: 28px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 34px;
+            letter-spacing: 0em;
+            text-align: left;
+
+            margin-bottom: 45px;
+            @media (max-width: 992px) {
+                margin-top: 30px;
+            }
+        }
+        .product-sizes-container {
+            .product-sizes-title {
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 17px;
+                letter-spacing: 0em;
+                text-align: left;
+
+                margin-bottom: 20px;
+            }
+            .product-sizes-list {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                .product-sizes-item {
+                    display: flex;
+                    justify-content: center;
+                    align-self: center;
+                    height: 30px;
+                    width: 127px;
+                    border: solid 1px darkgray;
+
+                    font-size: 11px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 30px;
+                    letter-spacing: 0em;
+                    text-align: center;
+                }
+            }
+        }
+        .product-price-container {
+            display: flex;
+            margin: 50px 0px;
+            @media (max-width: 992px) {
+                order: 1 !important;
+            }
+            .product-price-actual {
+                font-size: 36px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 44px;
+            }
+            .product-price-old {
+                display: flex;
+                align-items: flex-end;
+                margin-left: 10px;
+                font-family: Montserrat;
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 30px;
+                letter-spacing: 0em;
+                text-align: left;
+                color: red;
+                text-decoration: line-through;
+            }
+        }
+
+        .product-buybutton {
+            font-size: 16px;
+            font-weight: 700;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            height: 46px;
+            width: 320px;
+            background-color: #161616;
+            cursor: pointer;
+
+            @media (max-width: 992px) {
+                width: 100%;
+            }
+        }
+        .product-buy-description {
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 19px;
+            letter-spacing: 0em;
+            text-align: left;
+            color: #afafaf;
+            margin-top: 30px;
+        }
+        .product-socials-container {
+            display: flex;
+            .product-socials-item {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                margin: 20px 50px 20px 0;
+
+                font-size: 16px;
+                font-weight: 500;
+                color: #afafaf;
+            }
+            .product-socials-inst-container {
+                .product-socials-inst-icon {
+                    .product-socials-inst-img {
+                        padding: 10px 10px 10px 0px;
+                    }
+                }
+                .product-socials-inst-title {
+                }
+                .product-socials-inst-title:hover {
+                    color: black;
+                    text-decoration: underline;
+                }
+            }
+            .product-socials-telegram-container {
+                .product-socials-telegram-icon {
+                    .product-socials-telegram-img {
+                        padding: 10px;
+                    }
+                }
+                .product-socials-telegram-title {
+                }
+                .product-socials-telegram-title:hover {
+                    color: black;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+.image-gallery-left-nav .image-gallery-svg,
+.image-gallery-right-nav .image-gallery-svg {
+    height: 60px !important;
+}

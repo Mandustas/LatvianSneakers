@@ -1,0 +1,131 @@
+.filter-wrapper {
+    @media (max-width: 992px) {
+        display: none;
+    }
+}
+
+.filter-container {
+    @media (max-width: 992px) {
+        margin: 10px;
+    }
+    .filter-title {
+        font-size: 16px;
+        font-weight: 500;
+        padding-bottom: 80px;
+        .filter-title-icon {
+            padding: 0 10px;
+        }
+    }
+    .filter-sizes-container {
+        padding-bottom: 80px;
+        .filter-sizes-title {
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .filter-sizes-list {
+            display: flex;
+            flex-flow: row;
+            flex-wrap: wrap;
+            article {
+                position: relative;
+                width: 43%;
+                height: 30px;
+                margin-top: 7px;
+                margin-right: 15px;
+                div {
+                    font-size: 11px;
+                    font-weight: 500;
+
+                    width: 100%;
+                    height: 100%;
+
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    box-sizing: border-box;
+                    border: 1px solid darkgray;
+                }
+                input {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    opacity: 0;
+                    cursor: pointer;
+                }
+                input[type="checkbox"]:hover {
+                    border: 1px solid black;
+                }
+                input[type="checkbox"]:checked ~ div {
+                    border: 1px solid black;
+                    border-bottom: solid 4px black;
+                }
+            }
+        }
+    }
+    .filter-brends-container {
+        padding-bottom: 80px;
+        .filter-brends-title {
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .filter-brends-list {
+            .filter-brends-item {
+                .filter-brends-item-title {
+                    font-weight: 500;
+                    font-size: 14px;
+                    cursor: pointer;
+                }
+                .filter-brends-item-title:hover {
+                    border-bottom: solid 1px black;
+                }
+                .filter-brends-item-icon {
+                    font-weight: 100;
+                    cursor: pointer;
+                    @media (max-width: 992px) {
+                        padding: 10px;
+                        // width: 90%
+                    }
+                }
+                .filter-brends-line {
+                    cursor: pointer;
+                    width: max-content;
+                    font-weight: 500;
+                    font-size: 14px;
+                    margin: 5px 20px;
+                    @media (max-width: 992px) {
+                        width: 90%;
+                    }
+                }
+                .filter-brends-line:hover {
+                    border-bottom: solid 1px black;
+                    @media (max-width: 992px) {
+                        border-bottom: none;
+                    }
+                }
+            }
+        }
+    }
+    .filter-buttons-container {
+        display: flex;
+        padding-bottom: 80px;
+        .filter-button {
+            width: 50%;
+            height: 36px;
+            border: none;
+            outline: none;
+            font-size: 12px;
+            font-weight: 500;
+            border: solid 1px black;
+        }
+        .filter-button-submit {
+            background-color: black;
+            color: white;
+        }
+        .filter-button-clear {
+            background-color: white;
+        }
+    }
+}

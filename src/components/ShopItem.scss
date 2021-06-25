@@ -1,0 +1,69 @@
+.shop-item-card-containter {
+    border-radius: 0 !important;
+    margin-bottom: 30px;
+    cursor: pointer;
+    .shop-item-card-image {
+        border-radius: 0!important;
+    }
+    .shop-item-card-body {
+        padding: 0.85rem!important;
+        .shop-item-card-brand {
+            font-family: Montserrat;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 15px;
+            letter-spacing: 0em;
+            text-align: left;
+            color: #979494;
+            @media (max-width: 992px) {
+                display: none;
+            }
+        }
+        .shop-item-card-title {
+            font-family: Montserrat;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 17px;
+            letter-spacing: 0em;
+            text-align: left;
+            min-height: 40px;
+            margin-top: 10px;
+            @media (max-width: 992px) {
+                order: 2 !important;
+            }
+        }
+        .shop-item-card-price {
+            display: flex;
+            @media (max-width: 992px) {
+                order: 1 !important;
+            }
+            .shop-item-card-price-actual {
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 800;
+                line-height: 22px;
+                letter-spacing: 0em;
+                text-align: left;
+            }
+            .shop-item-card-price-old {
+                display: flex;
+                align-items: flex-end;
+                margin-left: 10px;
+                font-family: Montserrat;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 17px;
+                letter-spacing: 0em;
+                text-align: left;
+                color: red;
+                text-decoration: line-through;
+            }
+        }
+    }
+}
+.shop-item-card-containter:hover{
+    border: solid 1px black;
+}

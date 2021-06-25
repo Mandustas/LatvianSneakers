@@ -9,6 +9,7 @@ import latvian from '../imgs/latvian.svg'
 import english from '../imgs/english.svg'
 import russian from '../imgs/russian.svg'
 import world from '../imgs/world.svg'
+
 function Header() {
     return (
         <div>
@@ -70,6 +71,9 @@ function Header() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <div className="header-menu-container">
                             <ul className="navbar-nav mb-2 mb-lg-0 header-menu" >
+                                <li className="nav-item">
+                                    <a className="nav-link header-menu-item header-menu-item-home" href="#">ГЛАВНАЯ</a>
+                                </li>
                                 <li className="nav-item">
                                     <a className="nav-link active header-menu-item" aria-current="page" href="#">ДОСТАВКА</a>
                                 </li>
@@ -150,12 +154,12 @@ function Header() {
                                     </a>
                                 </div>
                             </div>
+
+                            <div className="header-menu-button-close" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            </div>
                         </div>
-
                     </div>
-
                 </div>
-
             </nav>
         </div>
     )
