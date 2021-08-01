@@ -1,0 +1,24 @@
+.orders-container {
+    min-height: 700px;
+
+    .orders-header {
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 34px;
+        letter-spacing: 0em;
+        text-align: left;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        margin-left: 15px;
+    }
+    .orders-list {
+        .orders-item {
+            cursor: pointer;
+            .orders-item-preview {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+}

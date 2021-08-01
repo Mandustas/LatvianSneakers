@@ -1,0 +1,37 @@
+.delivery-container {
+    min-height: 700px;
+    .delivery-header {
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 34px;
+        letter-spacing: 0em;
+        text-align: left;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        margin-left: 15px;
+    }
+    .delivery-container {
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 19px;
+        letter-spacing: 0em;
+        text-align: left;
+        .delivery-bordered-item {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border: solid 1px black;
+            .delivery-bordered-item-img {
+                margin: 20px;
+            }
+            .delivery-bordered-item-text {
+            }
+        }
+        .delivery-partners{
+            margin-top: 30px;
+            width: 90%;
+        }
+    }
+}

@@ -1,0 +1,26 @@
+.reviews-container {
+    min-height: 700px;
+    .reviews-header {
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 34px;
+        letter-spacing: 0em;
+        text-align: left;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        margin-left: 15px;
+    }
+    .reviews-list {
+        .reviews-item {
+            overflow: hidden;
+            cursor: pointer;
+
+            .reviews-item-preview {
+                width: 100%;
+                height: auto;
+                margin: -120% 0px -30% 0px;
+            }
+        }
+    }
+}
