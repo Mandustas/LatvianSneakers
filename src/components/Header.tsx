@@ -15,7 +15,9 @@ function Header() {
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark header-wrapper">
                 <div className="container-fluid header-container">
-                    <img src={logo} alt="" className="d-inline-block align-text-top"></img>
+                    <a href="/">
+                        <img src={logo} alt="" className="d-inline-block align-text-top"></img>
+                    </a>
                     <div className="header-buttons d-flex">
 
                         <div className="dropdown  header-lang-wrapper-mobile" >
@@ -72,25 +74,31 @@ function Header() {
                         <div className="header-menu-container">
                             <ul className="navbar-nav mb-2 mb-lg-0 header-menu" >
                                 <li className="nav-item">
-                                    <a className="nav-link header-menu-item header-menu-item-home" href="#">ГЛАВНАЯ</a>
+                                    <a className="nav-link header-menu-item header-menu-item-home" href="/">ГЛАВНАЯ</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link active header-menu-item" aria-current="page" href="#">ДОСТАВКА</a>
+                                    <a className="nav-link active header-menu-item" aria-current="page" href="/delivery">ДОСТАВКА</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link header-menu-item" href="#">ПРАВИЛА</a>
+                                    <a className="nav-link header-menu-item" href="/rules">ПРАВИЛА</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link header-menu-item" href="#">ОТЗЫВЫ</a>
+                                    <a className="nav-link header-menu-item" href="/reviews">ОТЗЫВЫ</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link header-menu-item" href="#">ЗАКАЗЫ</a>
+                                    <a className="nav-link header-menu-item" href="/orders">ЗАКАЗЫ</a>
                                 </li>
                             </ul>
                             <div className="header-soc-networks-container">
-                                <img src={inst} alt="" className="header-soc-networks-item"></img>
-                                <img src={whatsup} alt="" className="header-soc-networks-item"></img>
-                                <img src={tg} alt="" className="header-soc-networks-item"></img>
+                                <img src={inst} alt="" className="header-soc-networks-item" onClick={() => {
+                                    document.location.href = "https://www.instagram.com/latviansneakers"
+                                }}></img>
+                                <img src={whatsup} alt="" className="header-soc-networks-item" onClick={() => {
+                                    document.location.href = "https://wa.me/37122439139"
+                                }}></img>
+                                <img src={tg} alt="" className="header-soc-networks-item" onClick={() => {
+                                    document.location.href = "https://t.me/latviansneakers"
+                                }}></img>
                             </div>
                             <div className="header-contacts-container">
                                 <div className="header-contacts-line-containter">

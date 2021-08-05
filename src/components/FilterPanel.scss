@@ -73,13 +73,21 @@
         }
         .filter-brends-list {
             .filter-brends-item {
+                label{
+                    input:first-child{
+                        display: none;
+                    }
+                    
+                }
                 .filter-brends-item-title {
                     font-weight: 500;
                     font-size: 14px;
                     cursor: pointer;
+                    text-transform: uppercase;
                 }
                 .filter-brends-item-title:hover {
-                    border-bottom: solid 1px black;
+                    // border-bottom: solid 1px black;
+                    font-weight: bold;
                 }
                 .filter-brends-item-icon {
                     font-weight: 100;
@@ -90,8 +98,9 @@
                     }
                 }
                 .filter-brends-line {
+                    width: 60%;
                     cursor: pointer;
-                    width: max-content;
+                    // width: max-content;
                     font-weight: 500;
                     font-size: 14px;
                     margin: 5px 20px;
@@ -99,8 +108,12 @@
                         width: 90%;
                     }
                 }
+                .filter-brands-selected{
+                    font-weight: bold;
+                }
                 .filter-brends-line:hover {
-                    border-bottom: solid 1px black;
+                    // border-bottom: solid 1px black;
+                    font-weight: bold;
                     @media (max-width: 992px) {
                         border-bottom: none;
                     }

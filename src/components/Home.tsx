@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import BannersContainer from './BannersContainer'
 import FilterPanel from './FilterPanel'
 import FilterSidebar from './FilterSidebar'
@@ -19,7 +20,7 @@ function Home() {
                 </div>
             </div>
             <FilterSidebar></FilterSidebar>
-            <div className={`overlay`} ></div>
+            <div className={`overlay`}></div>
         </>
     )
 }

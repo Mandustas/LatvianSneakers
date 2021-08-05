@@ -1,14 +1,24 @@
-import React from 'react'
-// import slide_1 from '../imgs/slide_1.png'
-// import slide_2 from '../imgs/slide_1.png'
-// import slide_3 from '../imgs/slide_1.png'
-import slide_1 from '../imgs/1.png'
-import slide_2 from '../imgs/2.png'
-import slide_3 from '../imgs/3.png'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import config from '../config/config.json'
 import "./Carousel.scss"
 
+export interface IBanner {
+    id: number;
+    path: string;
+    order: number;
+}
 
 function Carousel() {
+    const [banners, setBanners] = useState<IBanner[]>([]);
+    useEffect(() => {
+        axios.get<IBanner[]>(config.API_SERVER_URL + "banner")
+            .then(({ data }) => {
+                setBanners(data)
+            })
+    }, [])
+
+
     return (
         <>
             <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
@@ -18,15 +28,15 @@ function Carousel() {
                     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                 </ol>
                 <div className="carousel-inner">
-                    <div className="carousel-item active">
-                        <img src={slide_1} className="d-block w-100" alt="..."></img>
-                    </div>
-                    <div className="carousel-item">
-                        <img src={slide_2} className="d-block w-100" alt="..."></img>
-                    </div>
-                    <div className="carousel-item">
-                        <img src={slide_3} className="d-block w-100" alt="..."></img>
-                    </div>
+                    {
+
+                        banners.map((banner: IBanner, index) => (
+                            <div className={index == 0 ? "carousel-item active" : "carousel-item"}>
+                                <img src={banner.path} className="d-block w-100" alt="..."></img>
+                            </div>
+
+                        ))
+                    }
                 </div>
                 <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                     <span className="carousel-control-prev-icon" aria-hidden="true"></span>

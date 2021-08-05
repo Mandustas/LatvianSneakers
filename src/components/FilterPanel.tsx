@@ -1,112 +1,171 @@
-import React from 'react'
+import axios from 'axios';
+import { Field, Form, Formik } from 'formik';
+import React, { useEffect, useState } from 'react'
+import config from '../config/config.json'
+import * as yup from 'yup'
 import "./FilterPanel.scss"
+import { IBrand, IModel } from './HeaderBrends';
+import { useActions } from '../hooks/useActions';
 
+export interface ISize {
+    id: number;
+    value: string;
+}
+
+
+$(document).on('click', '.filter-brands-radio', function () {
+    $(".filter-brands-radio").removeClass("filter-brands-selected")
+    $(this).addClass("filter-brands-selected")
+});
 
 function FilterPanel() {
+    const [sizes, setSizes] = useState<ISize[]>([]);
+    const [brands, setBrands] = useState<IBrand[]>([]);
+    const { fetchProducts, changeBreadcrumbs } = useActions()
+
+    useEffect(() => {
+        axios.get<ISize[]>(config.API_SERVER_URL + "size")
+            .then(({ data }) => {
+                setSizes(data)
+            })
+    }, [])
+    useEffect(() => {
+        axios.get<IBrand[]>(config.API_SERVER_URL + "brand")
+            .then(({ data }) => {
+                setBrands(data)
+            })
+    }, [])
+
+    let initialValuesCreate = {
+        sizes: [],
+        picked: '',
+    }
+
     return (
         <>
-            <div className="filter-wrapper">
-                <div className="filter-container">
-                    <div className="filter-title">
-                        Фильтры
-                        <i className="fa fa-filter filter-title-icon"></i>
-                    </div>
-                    <div className="filter-sizes-container">
-                        <div className="filter-sizes-title">
-                            РАЗМЕР
-                        </div>
-                        <div className="filter-sizes-list">
-                            <article className="feature1">
-                                <input type="checkbox" id="feature1" />
-                                <div>
-                                    <span>
-                                        EUR 35
-                                    </span>
-                                </div>
-                            </article>
+            <Formik
+                initialValues={
+                    initialValuesCreate
+                }
 
-                            <article className="feature2">
-                                <input type="checkbox" id="feature2" />
-                                <div>
-                                    <span>
-                                        EUR 36
-                                    </span>
-                                </div>
-                            </article>
+                validateOnBlur
+                onSubmit={async (values, { resetForm }) => {
 
-                            <article className="feature3">
-                                <input type="checkbox" id="feature3" />
-                                <div>
-                                    <span>
-                                        EUR 37
-                                    </span>
-                                </div>
-                            </article>
+                    let url = config.API_SERVER_URL + "product?"
+                    if (values.sizes.length != 0) {
+                        values.sizes.forEach(size => url = url + "sizes=" + size + "&")
+                    }
+                    let brandRes = values.picked.split("-")
+                    if (brandRes[0] == "b") {
+                        url = url + "BrandId=" + brandRes[1] + "&"
+                        changeBreadcrumbs(parseInt(brandRes[1]), undefined)
+                    }
+                    if (brandRes[0] == "m") {
+                        url = url + "ModelId=" + brandRes[1] + "&"
+                        changeBreadcrumbs(parseInt(brandRes[3]), parseInt(brandRes[1]))
+                    }
+                    fetchProducts(url);
 
-                            <article className="feature4">
-                                <input type="checkbox" id="feature4" />
-                                <div>
-                                    <span>
-                                        EUR 38
-                                    </span>
-                                </div>
-                            </article>
+                }}
+            >
+                {({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty, setFieldValue }) => (
+                    <div className="">
+                        <Form>
+                            <div className="filter-wrapper">
+                                <div className="filter-container">
+                                    <div className="filter-title">
+                                        Фильтры
+                                        <i className="fa fa-filter filter-title-icon"></i>
+                                    </div>
+                                    <div className="filter-sizes-container">
+                                        <div className="filter-sizes-title">
+                                            РАЗМЕР
+                                        </div>
+                                        <div role="group" aria-labelledby="checkbox-group" className="filter-sizes-list">
+                                            {
+                                                sizes.map((size: ISize) => (
+                                                    <article className="feature">
+                                                        {/* <input type="checkbox" id="feature1" /> */}
+                                                        <Field type="checkbox" name="sizes" value={size.id.toString()} />
 
-                            <article className="feature4">
-                                <input type="checkbox" id="feature4" />
-                                <div>
-                                    <span>
-                                        EUR 39
-                                    </span>
-                                </div>
-                            </article>
+                                                        <div>
+                                                            <span>
+                                                                {size.value}
+                                                            </span>
+                                                        </div>
+                                                    </article>
+                                                ))
+                                            }
 
-                        </div>
-                    </div>
-                    <div className="filter-brends-container">
-                        <div className="filter-brends-title">
-                            БРЕНД
-                        </div>
-                        <div className="filter-brends-list">
-                            <div id="accordion">
-                                <div className="filter-brends-item">
-                                    <div className="" >
-                                        <div className="mb-0 d-flex justify-content-between align-items-center">
-                                            <div className="filter-brends-item-title">BALENCIAGA</div>
-                                            <i className="fa fa-plus filter-brends-item-icon " data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1"></i>
 
                                         </div>
                                     </div>
+                                    <div className="filter-brends-container">
+                                        <div className="filter-brends-title">
+                                            БРЕНД
+                                        </div>
+                                        <div className="filter-brends-list">
+                                            <div role="group" id="accordion">
+                                                {
+                                                    brands.map((brand: IBrand, index) => (
+                                                        <div className="filter-brends-item">
+                                                            <div className="" >
+                                                                <div className="mb-0 d-flex justify-content-between align-items-center">
+                                                                    <label className="filter-brends-item-title filter-brands-radio">
+                                                                        <Field
+                                                                            type="radio"
+                                                                            name="picked"
+                                                                            value={"b-" + brand.id}
+                                                                        />
+                                                                        {brand.title}
+                                                                    </label>
 
-                                    <div id="collapse1" className="collapse show" data-parent="#accordion">
-                                        <div className="filter-brends-line">Line</div>
-                                        <div className="filter-brends-line">Line</div>
-                                    </div>
-                                </div>
-                                <div className="filter-brends-item">
-                                    <div className="" >
-                                        <div className="mb-0 d-flex justify-content-between align-items-center">
-                                            <div className="filter-brends-item-title">BALENCIAGA</div>
-                                            <i className="fa fa-plus filter-brends-item-icon collapsed" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2"></i>
+                                                                    <i className="fa fa-plus filter-brends-item-icon " data-toggle="collapse" data-target={"#collapse" + index} aria-expanded="true" aria-controls={"collapse" + index}></i>
+                                                                </div>
+                                                            </div>
 
+                                                            <div id={"collapse" + index} className={index == 0 ? "collapse show" : "collapse"} data-parent="#accordion">
+                                                                {
+                                                                    brand.models.map((model: IModel, index) => (
+                                                                        <label className="filter-brends-line filter-brands-radio">
+                                                                            <Field
+                                                                                type="radio"
+                                                                                name="picked"
+                                                                                value={"m-" + model.id + "-b-" + brand.id}
+                                                                            />
+                                                                            {model.title}
+                                                                        </label>
+                                                                    ))
+                                                                }
+
+                                                            </div>
+                                                        </div>
+                                                    ))
+                                                }
+
+                                            </div>
                                         </div>
                                     </div>
-
-                                    <div id="collapse2" className="collapse" data-parent="#accordion">
-                                        <div className="filter-brends-line">Line</div>
-                                        <div className="filter-brends-line">Line</div>
+                                    <div className="filter-buttons-container">
+                                        <button
+                                            type="submit"
+                                            className="filter-button filter-button-submit"
+                                        >Применить</button>
+                                        <button
+                                            type="reset"
+                                            className="filter-button filter-button-clear"
+                                            onClick={() => {
+                                                $(".filter-brands-radio").removeClass("filter-brands-selected")
+                                                fetchProducts(config.API_SERVER_URL + "product")
+                                            }}
+                                        >Сбросить</button>
                                     </div>
                                 </div>
                             </div>
-
-                        </div>
+                        </Form>
                     </div>
-                    <div className="filter-buttons-container">
-                        <button className="filter-button filter-button-submit">Применить</button>
-                        <button className="filter-button filter-button-clear">Сбросить</button>
-                    </div>
-                </div>
-            </div>
+                )}
+            </Formik>
         </>
     )
 }

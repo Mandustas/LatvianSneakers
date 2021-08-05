@@ -9,7 +9,9 @@ function BannersContainer() {
             <div className="container-fluid banners-container">
                 <div className="row banners-container-row">
                     <div className="col-md-12 col-lg-3 m-auto banners-inst">
-                        <img className="img-fluid" src={instbanner} alt="banner" />
+                        <img className="img-fluid" src={instbanner} alt="banner" style={{cursor:"pointer"}} onClick={()=>{
+                            document.location.href = 'https://www.instagram.com/latviansneakers';
+                        }}/>
                     </div>
                     <div className="col-md-12 col-lg-9 banners-slider">
                         <Carousel></Carousel>

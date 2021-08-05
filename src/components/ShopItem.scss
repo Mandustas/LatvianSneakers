@@ -2,11 +2,37 @@
     border-radius: 0 !important;
     margin-bottom: 30px;
     cursor: pointer;
+    .shop-item-card-sticker {
+        position: absolute;
+        font-family: Montserrat;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        color: white;
+        width: 130px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .shop-item-card-sticker.new {
+        background-color: #02bd63;
+    }
+    .shop-item-card-sticker.popular {
+        background-color: #1262a3;
+    }
+    .shop-item-card-sticker.sale {
+        background-color: #e0001b;
+    }
+    .shop-item-card-sticker .new {
+        background-color: #02bd63;
+    }
     .shop-item-card-image {
-        border-radius: 0!important;
+        border-radius: 0 !important;
     }
     .shop-item-card-body {
-        padding: 0.85rem!important;
+        padding: 0.85rem !important;
         .shop-item-card-brand {
             font-family: Montserrat;
             font-size: 12px;
@@ -64,6 +90,6 @@
         }
     }
 }
-.shop-item-card-containter:hover{
+.shop-item-card-containter:hover {
     border: solid 1px black;
 }

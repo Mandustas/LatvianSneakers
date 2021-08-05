@@ -1,104 +1,52 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState, useEffect } from 'react'
 import "./HeaderBrends.scss"
+import config from '../config/config.json'
+import HeaderBrand from './HeaderBrand';
+import { useHistory } from "react-router-dom";
+import { useActions } from '../hooks/useActions';
+
+export interface IModel {
+    id: number;
+    title: string;
+    brandId: number;
+}
+
+export interface IBrand {
+    id: number;
+    title: string;
+    models: IModel[];
+}
 
 function HeaderBrends() {
+    let history = useHistory();
+    const { changeBreadcrumbs } = useActions()
+
+    function handleClick(id: number) {
+        changeBreadcrumbs(id, undefined)
+        history.push("/shop/" + id);
+        
+    }
+
+    const [brands, setBrands] = useState<IBrand[]>([]);
+    useEffect(() => {
+        axios.get<IBrand[]>(config.API_SERVER_URL + "brand")
+            .then(({ data }) => {
+                setBrands(data)
+            })
+
+    }, [])
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar headerbrends-wrapper">
                 <div className="container-fluid headerbrends-container">
                     <ul className="navbar-nav headerbrends-menu">
-                        <li className="nav-item dropdown headerbrends-menu-item">
-                            <div className="dropdown-toggle headerbrends-menu-item-link-wrapper">
-                                <a className="nav-link  headerbrends-menu-item-link" href="#" data-bs-toggle="dropdown">  БРЕНД #1  </a>
-                                <div className="dropdown-menu headerbrends-menu-dropdown-wrapper">
-                                    <ul className="headerbrends-menu-dropdown-container">
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 1</a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 2 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                    </ul>
-                                </div>
-                            </div>
 
-                        </li>
+                        {brands.map((brand: IBrand) => (
+                            <HeaderBrand id={brand.id} key={brand.id} title={brand.title} models={brand.models} onClick={() => handleClick(brand.id)}></HeaderBrand>
+                        ))}
 
 
-                        <li className="nav-item dropdown headerbrends-menu-item">
-                            <div className="dropdown-toggle headerbrends-menu-item-link-wrapper">
-                                <a className="nav-link  headerbrends-menu-item-link" href="#" data-bs-toggle="dropdown">  БРЕНД #1  </a>
-                                <div className="dropdown-menu headerbrends-menu-dropdown-wrapper">
-                                    <ul className="headerbrends-menu-dropdown-container">
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 1</a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 2 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-
-                        </li>
-
-
-                        <li className="nav-item dropdown headerbrends-menu-item">
-                            <div className="dropdown-toggle headerbrends-menu-item-link-wrapper">
-                                <a className="nav-link  headerbrends-menu-item-link" href="#" data-bs-toggle="dropdown">  БРЕНД #1  </a>
-                                <div className="dropdown-menu headerbrends-menu-dropdown-wrapper">
-                                    <ul className="headerbrends-menu-dropdown-container">
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 1</a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 2 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                        <li><a className="dropdown-item headerbrends-menu-dropdown-item" href="#"> Submenu item 3 </a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
                     </ul>
                 </div>
             </nav>

@@ -15,24 +15,30 @@ function Footer() {
                     <div className="footer-menu-wrapper">
                         <ul className="navbar-nav mb-2 mb-lg-0 footer-menu" >
                             <li className="nav-item">
-                                <a className="nav-link active footer-menu-item" aria-current="page" href="#">ДОСТАВКА</a>
+                                <a className="nav-link active footer-menu-item" aria-current="page" href="/delivery">ДОСТАВКА</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link footer-menu-item" href="#">ПРАВИЛА</a>
+                                <a className="nav-link footer-menu-item" href="/rules">ПРАВИЛА</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link footer-menu-item" href="#">ОТЗЫВЫ</a>
+                                <a className="nav-link footer-menu-item" href="/reviews">ОТЗЫВЫ</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link footer-menu-item" href="#">ЗАКАЗЫ</a>
+                                <a className="nav-link footer-menu-item" href="/orders">ЗАКАЗЫ</a>
                             </li>
                         </ul>
                     </div>
                     <div className="footer-socials">
                         <div className="footer-soc-networks-container">
-                            <img src={inst} alt="" className="footer-soc-networks-item"></img>
-                            <img src={whatsup} alt="" className="footer-soc-networks-item"></img>
-                            <img src={tg} alt="" className="footer-soc-networks-item"></img>
+                            <img src={inst} alt="" className="footer-soc-networks-item" onClick={() => {
+                                document.location.href = "https://www.instagram.com/latviansneakers"
+                            }}></img>
+                            <img src={whatsup} alt="" className="footer-soc-networks-item" onClick={() => {
+                                document.location.href = "https://wa.me/37122439139"
+                            }}></img>
+                            <img src={tg} alt="" className="footer-soc-networks-item" onClick={() => {
+                                    document.location.href = "https://t.me/latviansneakers"
+                                }}></img>
                         </div>
                     </div>
 
