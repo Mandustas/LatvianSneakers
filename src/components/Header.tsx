@@ -72,6 +72,8 @@ function Header() {
 
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <div className="header-menu-container">
+                            <div className="header-menu-button-close" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            </div>
                             <ul className="navbar-nav mb-2 mb-lg-0 header-menu" >
                                 <li className="nav-item">
                                     <a className="nav-link header-menu-item header-menu-item-home" href="/">ГЛАВНАЯ</a>
@@ -161,9 +163,6 @@ function Header() {
                                         </div>
                                     </a>
                                 </div>
-                            </div>
-
-                            <div className="header-menu-button-close" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             </div>
                         </div>
                     </div>

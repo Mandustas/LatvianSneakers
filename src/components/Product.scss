@@ -1,9 +1,40 @@
 .product-wrapper {
     margin-top: 60px;
+    margin-bottom: 20px;
     @media (max-width: 992px) {
         margin-top: 30px;
     }
     .product-container {
+        .product-sticker-block {
+            display: flex;
+            margin-bottom: 15px;
+            .product-sticker-block {
+                height: 32px;
+                width: 120px;
+                margin: 0px 10px 0px 0px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                font-family: Montserrat;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 17px;
+                letter-spacing: 0em;
+                text-align: center;
+                color: white;
+            }
+            .popular {
+                background-color: #1262a3;
+            }
+            .new {
+                background-color: #02bd63;
+            }
+            .sale {
+                background-color: #e0001b;
+            }
+        }
         .product-gallery-desctop {
             @media (max-width: 992px) {
                 display: none;

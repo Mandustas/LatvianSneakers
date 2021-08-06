@@ -18,11 +18,12 @@ interface ShopItemProps {
 
 function ShopItem({ id, title, image, brand, isNew, isPopular, isSale, price, discount }: ShopItemProps) {
     let history = useHistory();
+    
     return (
         <>
             <div className="col-lg-4 col-6 " style={{ padding: "0px 5px 0px 5px" }}>
                 <div className="card shop-item-card-containter" onClick={() => {
-                    history.push("product/" + id)
+                    history.push("/product/" + id)
                 }}>
                     {
                         isSale ?
@@ -57,14 +58,14 @@ function ShopItem({ id, title, image, brand, isNew, isPopular, isSale, price, di
                             <div className="shop-item-card-price-actual">
                                 {
                                     discount != 0 ? discount : price
-                                }$
+                                }€
                             </div>
                             <div className="shop-item-card-price-old">
                                 {
                                     discount != 0 ? price : null
                                 }
                                 {
-                                    discount != 0 ? "$" : null
+                                    discount != 0 ? "€" : null
                                 }
                             </div>
                         </div>

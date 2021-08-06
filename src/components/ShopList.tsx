@@ -5,6 +5,7 @@ import config from '../config/config.json'
 import axios from 'axios';
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import { useActions } from '../hooks/useActions';
+import { IModel } from './HeaderBrends';
 
 
 export interface Brand {
@@ -35,6 +36,7 @@ export interface IProduct {
     brand: Brand;
     sizes: Size[];
     images: Image[];
+    model: IModel
 }
 
 
