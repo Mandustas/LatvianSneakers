@@ -15,7 +15,9 @@
         .reviews-item {
             overflow: hidden;
             cursor: pointer;
-
+            display: flex;
+            flex-direction: column-reverse;
+            min-height: 200px;
             .reviews-item-preview {
                 width: 100%;
                 height: auto;

@@ -1,0 +1,26 @@
+.adminbanner-container {
+    .adminbanner-item {
+        display: flex;
+        margin-bottom: 20px;
+        margin-left: 16px;
+        .adminbanner-number {
+            width: 20px;
+        }
+        .adminbanner-image-block {
+            .adminbanner-image {
+                width: 400px
+            }
+        }
+        .adminbanner-buttons {
+            height: fit-content;
+            display: flex;
+            flex-direction: column;    
+            margin-top: -10px;
+        }
+        .adminbanner-delete {
+
+        }
+        .adminbanner-edit {
+        }
+    }
+}

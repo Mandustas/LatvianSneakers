@@ -37,6 +37,7 @@ export interface IProduct {
     sizes: Size[];
     images: Image[];
     model: IModel
+    modelId?: number
 }
 
 
@@ -71,11 +72,11 @@ function ShopList() {
                 <div className="row">
                     {
                         products.length != 0 ?
-                        products.map((product: IProduct) => (
-                            <ShopItem key={product.id} id={product.id} title={product.title} brand={product.brand.title} isNew={product.isNew} isPopular={product.isPopular} isSale={product.isSale} price={product.price} discount={product.discount} image={product.images[0].path}></ShopItem>
-                        ))
-                        :
-                        "Товары по выбранному фильтру не найдены"
+                            products.map((product: IProduct) => (
+                                <ShopItem key={product.id} id={product.id} title={product.title} brand={product.brand.title} isNew={product.isNew} isPopular={product.isPopular} isSale={product.isSale} price={product.price} discount={product.discount} image={product.images[0]?.path}></ShopItem>
+                            ))
+                            :
+                            "Товары по выбранному фильтру не найдены"
                     }
                 </div>
             </div>

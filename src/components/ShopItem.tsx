@@ -7,7 +7,7 @@ interface ShopItemProps {
     key: number;
     id: number;
     title: string;
-    image: string;
+    image: string|undefined;
     brand: string;
     isPopular: boolean;
     isNew: boolean;

@@ -1,0 +1,27 @@
+.adminbrand-container {
+    margin-top: 25px;
+    margin-left: 15px;
+    .adminbrand-item {
+        .adminbrand-item-container {
+            display: flex;
+            align-items: center;
+            .adminbrand-title {
+                text-transform: uppercase;
+            }
+            .adminbrand-buttons {
+                margin-left: 20px;
+            }
+        }
+
+        .adminmodel-item {
+            margin-left: 30px;
+            display: flex;
+            align-items: center;
+            .adminmodel-title {
+            }
+            .adminbrand-buttons {
+                margin-left: 20px;
+            }
+        }
+    }
+}

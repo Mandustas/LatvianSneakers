@@ -1,0 +1,19 @@
+.reviews-list {
+    .reviews-item {
+        overflow: hidden;
+        cursor: pointer;
+        // display: flex;
+        // flex-direction: column-reverse;
+        min-height: 200px;
+        .reviews-item-preview {
+            width: 100%;
+            height: auto;
+            margin: 0 0px -30% 0px;
+        }
+        .adminbrand-buttons {
+            margin-top: 60px;
+            display: flex;
+            justify-content: flex-end;
+        }
+    }
+}
