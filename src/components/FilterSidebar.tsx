@@ -83,6 +83,8 @@ function FilterSidebar() {
                     fetchProducts(url);
                     $('#sidebar').removeClass('active');
                     $('.overlay').removeClass('active');
+                    $('.banners-container').css('display', 'none');
+
 
                 }}
             >
@@ -144,7 +146,19 @@ function FilterSidebar() {
                                                                             {brand.title}
                                                                         </label>
 
-                                                                        <i className="fa fa-plus filter-brends-item-icon " data-toggle="collapse" data-target={"#collapse" + index} aria-expanded="true" aria-controls={"collapse" + index}></i>
+                                                                        <i id={"PlusM-" + index} className={index == 0 ? "fa fa-minus filter-brends-item-icon " : "fa fa-plus filter-brends-item-icon "} data-toggle="collapse" data-target={"#collapse" + index} aria-expanded="true" aria-controls={"collapse" + index} onClick={() => {
+                                                                            // $('.filter-brends-item-icon').removeClass('fa-plus fa-minus');
+                                                                            // $('.filter-brends-item-icon').addClass('fa-plus');
+                                                                            if ($('#PlusM-' + index).hasClass("fa-plus")) {
+                                                                                $('#PlusM-' + index).removeClass('fa-plus');
+                                                                                $('#PlusM-' + index).addClass('fa-minus');
+                                                                            } else if ($('#PlusM-' + index).hasClass("fa-minus")) {
+                                                                                $('#PlusM-' + index).removeClass('fa-minus');
+                                                                                $('#PlusM-' + index).addClass('fa-plus');
+                                                                            }
+
+
+                                                                        }}></i>
                                                                     </div>
                                                                 </div>
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../imgs/logo.svg'
+import logo from '../imgs/watermark_white.png'
 import tg from '../imgs/tg.svg'
 import inst from '../imgs/inst.svg'
 import whatsup from '../imgs/whatsup.svg'
@@ -16,7 +16,7 @@ function Header() {
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark header-wrapper">
                 <div className="container-fluid header-container">
                     <a href="/">
-                        <img src={logo} alt="" className="d-inline-block align-text-top"></img>
+                        <img src={logo} alt="" className="d-inline-block align-text-top" style={{ height: "30px" }}></img>
                     </a>
                     <div className="header-buttons d-flex">
 

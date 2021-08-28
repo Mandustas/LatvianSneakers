@@ -22,7 +22,7 @@ function AdminPanelModelEdit() {
             axios.get<IModel>(config.API_SERVER_URL + "model/" + id)
                 .then(({ data }) => {
                     setModel(data)
-                    alert(JSON.stringify(data))
+                    // alert(JSON.stringify(data))
                 }).catch(err => history.push("/"));
         }
     }, [id])

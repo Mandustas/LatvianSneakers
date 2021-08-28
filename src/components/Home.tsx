@@ -9,7 +9,7 @@ function Home() {
     return (
         <>
             <BannersContainer></BannersContainer>
-            <div className="container-fluid">
+            <div className="container-fluid mt-5" style={{minHeight:"400px"}}>
                 <div className="row">
                     <div className="col-lg-3 col-md-12">
                         <FilterPanel></FilterPanel>

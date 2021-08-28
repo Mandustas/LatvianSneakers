@@ -64,7 +64,9 @@ function FilterPanel() {
                         url = url + "ModelId=" + brandRes[1] + "&"
                         changeBreadcrumbs(parseInt(brandRes[3]), parseInt(brandRes[1]))
                     }
+                    $('.banners-container').css('display', 'none');
                     fetchProducts(url);
+
 
                 }}
             >
@@ -120,7 +122,21 @@ function FilterPanel() {
                                                                         {brand.title}
                                                                     </label>
 
-                                                                    <i className="fa fa-plus filter-brends-item-icon " data-toggle="collapse" data-target={"#collapse" + index} aria-expanded="true" aria-controls={"collapse" + index}></i>
+                                                                    <i id={"Plus-" + index} className={index == 0 ? "fa fa-minus filter-brends-item-icon " : "fa fa-plus filter-brends-item-icon "} data-toggle="collapse" data-target={"#collapse" + index} aria-expanded="true" aria-controls={"collapse" + index} onClick={() => {
+                                                                        // $('.filter-brends-item-icon').removeClass('fa-plus fa-minus');
+                                                                        // $('.filter-brends-item-icon').addClass('fa-plus');
+                                                                        if ($('#Plus-' + index).hasClass("fa-plus")) {
+                                                                            $('.filter-brends-item-icon').removeClass('fa-plus fa-minus');
+                                                                            $('.filter-brends-item-icon').addClass('fa-plus');
+                                                                            $('#Plus-' + index).removeClass('fa-plus');
+                                                                            $('#Plus-' + index).addClass('fa-minus');
+                                                                        } else if ($('#Plus-' + index).hasClass("fa-minus")) {
+                                                                            $('.filter-brends-item-icon').removeClass('fa-plus fa-minus');
+                                                                            $('.filter-brends-item-icon').addClass('fa-plus');
+                                                                        }
+
+
+                                                                    }}></i>
                                                                 </div>
                                                             </div>
 

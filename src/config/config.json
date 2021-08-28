@@ -1,4 +1,4 @@
 {
-    "API_SERVER_URL": "https://localhost:44330/api/",
-    "AUTH_SERVER_URL": "https://localhost:44321/api/auth/"
+    "API_SERVER_URL": "https://api.latviansneakers.eu/api/",
+    "AUTH_SERVER_URL": "https://api.latviansneakers.eu/api/auth/"
 }

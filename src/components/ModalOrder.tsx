@@ -4,6 +4,7 @@ import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/scss/image-gallery.scss";
 import { IOrderImage } from './Orders';
 import { IGallery } from './Product';
+import "./ModalOrder.scss"
 
 interface ModalOrderProps {
     images: IOrderImage[]
@@ -11,7 +12,8 @@ interface ModalOrderProps {
 
 function ModalOrder({ images }: ModalOrderProps) {
     const [gallery, setGallery] = useState<IGallery[]>([]);
-
+    let widthSize = document.documentElement.scrollWidth;
+    // widthSize = $(window).width();
     useEffect(() => {
 
         let imagesTemp: IGallery[] = []
@@ -27,7 +29,7 @@ function ModalOrder({ images }: ModalOrderProps) {
 
     return (
         <div id="ModalOrder" style={{ display: "none" }} className="modal fade modal-dialog-scrollable" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog" style={{ padding: "51px" }}>
+            <div className="modal-dialog modal-order-container">
                 <div className="modal-content">
                     {/* <ImageGallery
                         items={images}
@@ -46,7 +48,7 @@ function ModalOrder({ images }: ModalOrderProps) {
                                         </div>
                                         :
                                         <div className="carousel-item">
-                                            <iframe width="396" height="705" src={img.path} title="YouTube video player" frameBorder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                            <iframe width={widthSize > 992 ? 396 : 360} height="705" src={img.path} title="YouTube video player" frameBorder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                                         </div>
                                 ))
                             }

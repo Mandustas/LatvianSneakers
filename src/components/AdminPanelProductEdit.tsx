@@ -159,7 +159,7 @@ function AdminPanelProductEdit() {
                             onSubmit={async (values) => {
                                 // alert(JSON.stringify(values, null, 2));
                                 values.sizes = values.sizes.filter(s => s != "");
-                                alert(JSON.stringify(values, null, 2));
+                                // alert(JSON.stringify(values, null, 2));
                                 if (values.images.length == 0) {
                                     alert("Добавьте хотя бы одно изображение")
                                     return
