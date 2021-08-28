@@ -10,8 +10,10 @@ import { reverse } from 'dns'
 import { IBrand, IModel } from './HeaderBrends'
 import axios from 'axios'
 import config from '../config/config.json'
+import { useTranslation } from 'react-i18next'
 
 function Shop() {
+    const { t, i18n } = useTranslation();
     let { brandid, modelid } = useParams<{ brandid: string, modelid: string }>();
     const [brand, setBrands] = useState<IBrand>();
     const [model, setModels] = useState<IModel>();
@@ -49,28 +51,31 @@ function Shop() {
                             <div className="dropdown">
                                 <button className="d-flex justify-content-between align-items-center" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ backgroundColor: "white", width: "255px", outline: "0", border: "solid 1px darkgray", }}>
                                     <div className="sort-button-text">
-                                        По умолчанию
+                                        {t("Shop.SortDefault")}
                                     </div>
                                     <i className="fa fa-caret-down"></i>
                                 </button>
                                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a className="dropdown-item" href='javascript:;' onClick={() => {
-                                        $(".sort-button-text").text("По умолчанию")
-
+                                        const Default = t("Shop.SortDefault")
+                                        $(".sort-button-text").text(Default)
                                         sortDefaultProducts(products)
-                                    }}>По умолчанию</a>
+                                    }}>{t("Shop.SortDefault")}</a>
                                     <a className="dropdown-item" href='javascript:;' onClick={() => {
-                                        $(".sort-button-text").text("Цена: по возрастанию")
+                                        const SortPriceAsc = t("Shop.SortPriceAsc")
+                                        $(".sort-button-text").text(SortPriceAsc)
                                         sortPriceProducts(products, false);
-                                    }}>Цена: по возрастанию</a>
+                                    }}>{t("Shop.SortPriceAsc")}</a>
                                     <a className="dropdown-item" href='javascript:;' onClick={() => {
-                                        $(".sort-button-text").text("Цена: по убыванию")
+                                        const SortPriceDesc = t("Shop.SortPriceDesc")
+                                        $(".sort-button-text").text(SortPriceDesc)
                                         sortPriceProducts(products, true);
-                                    }}>Цена: по убыванию</a>
+                                    }}>{t("Shop.SortPriceDesc")}</a>
                                     <a className="dropdown-item" href='javascript:;' onClick={() => {
-                                        $(".sort-button-text").text("Новинки")
+                                        const SortNews = t("Shop.SortNews")
+                                        $(".sort-button-text").text(SortNews)
                                         sortNewProducts(products)
-                                    }}>Новинки</a>
+                                    }}>{t("Shop.SortNews")}</a>
                                 </div>
                             </div>
                         </div>
@@ -81,35 +86,39 @@ function Shop() {
                             </button>
                             <button className="shop-button shop-button-clear sort-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <div className="sort-button-text">
-                                    По умолчанию
+                                    {t("Shop.SortDefault")}
                                 </div>
                                 <i className="fa fa-caret-down"></i>
 
                             </button>
                             <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a className="dropdown-item" href="javascript:;" onClick={() => {
-                                    $(".sort-button-text").text("По умолчанию")
+                                <a className="dropdown-item" href='javascript:;' onClick={() => {
+                                    const Default = t("Shop.SortDefault")
+                                    $(".sort-button-text").text(Default)
                                     sortDefaultProducts(products)
-                                }}>По умолчанию</a>
-                                <a className="dropdown-item" href="javascript:;" onClick={() => {
-                                    $(".sort-button-text").text("Цена: по возрастанию")
+                                }}>{t("Shop.SortDefault")}</a>
+                                <a className="dropdown-item" href='javascript:;' onClick={() => {
+                                    const SortPriceAsc = t("Shop.SortPriceAsc")
+                                    $(".sort-button-text").text(SortPriceAsc)
                                     sortPriceProducts(products, false);
-                                }}>Цена: по возрастанию</a>
-                                <a className="dropdown-item" href="javascript:;" onClick={() => {
-                                    $(".sort-button-text").text("Цена: по убыванию")
+                                }}>{t("Shop.SortPriceAsc")}</a>
+                                <a className="dropdown-item" href='javascript:;' onClick={() => {
+                                    const SortPriceDesc = t("Shop.SortPriceDesc")
+                                    $(".sort-button-text").text(SortPriceDesc)
                                     sortPriceProducts(products, true);
-                                }}>Цена: по убыванию</a>
-                                <a className="dropdown-item" href="javascript:;" onClick={() => {
-                                    $(".sort-button-text").text("Новинки")
+                                }}>{t("Shop.SortPriceDesc")}</a>
+                                <a className="dropdown-item" href='javascript:;' onClick={() => {
+                                    const SortNews = t("Shop.SortNews")
+                                    $(".sort-button-text").text(SortNews)
                                     sortNewProducts(products)
-                                }}>Новинки</a>
+                                }}>{t("Shop.SortNews")}</a>
                             </div>
                         </div>
                     </div>
                     <h1 className="shop-header-title">
                         {model != undefined && brand != undefined ? model?.title : null}
                         {model == undefined && brand != undefined ? brand?.title : null}
-                        {model == undefined && brand == undefined ? "Все модели" : null}
+                        {model == undefined && brand == undefined ? t("Shop.AllModels") : null}
                     </h1>
                 </div>
                 <ShopList></ShopList>

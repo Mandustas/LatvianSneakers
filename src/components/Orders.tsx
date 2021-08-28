@@ -5,6 +5,7 @@ import "../components/Orders.scss"
 import config from '../config/config.json'
 import axios from 'axios'
 import "./spinner.css"
+import { useTranslation } from 'react-i18next'
 
 export interface IOrderImage {
     id: number;
@@ -18,6 +19,7 @@ export interface IOrder {
 }
 
 function Orders() {
+    const { t, i18n } = useTranslation();
     function ModalOrderOpen(images: IOrderImage[]) {
         setImgs(images)
         $("#ModalOrder").modal('show')
@@ -40,7 +42,7 @@ function Orders() {
         <>
             <div className="orders-container">
                 <div className="orders-header">
-                    Заказы
+                    {t("OrdersTitle")}
                 </div>
                 <div className="orders-list container-fluid">
                     <div className="row">

@@ -4,6 +4,7 @@ import "../components/Reviews.scss"
 import ModalReview from './ModalReview'
 import config from '../config/config.json'
 import "./spinner.css"
+import { useTranslation } from 'react-i18next'
 
 export interface IReview {
     id: number;
@@ -11,6 +12,7 @@ export interface IReview {
 }
 
 function Reviews() {
+    const { t, i18n } = useTranslation();
     const [reviews, setReviews] = useState<IReview[]>();
     const [modalpath, setModalPath] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(false);
@@ -33,7 +35,7 @@ function Reviews() {
         <>
             <div className="reviews-container">
                 <div className="reviews-header">
-                    Отзывы
+                    {t("ReviewsTitle")}
                 </div>
                 <div className="reviews-list container-fluid">
                     <div className="row">

@@ -10,6 +10,7 @@ import config from '../config/config.json'
 import * as yup from 'yup'
 import { ISize } from './FilterPanel';
 import { useHistory } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 
 $(document).on('click', '.filter-brands-radio', function () {
@@ -21,6 +22,7 @@ $(document).on('click', '.filter-brands-radio', function () {
 
 function FilterSidebar() {
     let history = useHistory()
+    const { t, i18n } = useTranslation();
 
     useEffect(() => {
         $('#dismiss, .overlay').on('click', function () {
@@ -98,7 +100,7 @@ function FilterSidebar() {
                                 <nav id="sidebar">
                                     <div className="filter-sidebar-header">
                                         <div className="filter-sidebar-header-title">
-                                            ФИЛЬТР ТОВАРОВ
+                                            {t("Shop.FiltersTitle")}
                                         </div>
                                         <div id="dismiss" className="filter-sidebar-header-dismiss">
                                             <i className="fa fa-times"></i>
@@ -108,7 +110,7 @@ function FilterSidebar() {
                                     <div className="filter-container">
                                         <div className="filter-sizes-container">
                                             <div className="filter-sizes-title">
-                                                РАЗМЕР
+                                                {t("Shop.FiltersSizeTitle")}
                                             </div>
                                             <div role="group" aria-labelledby="checkbox-group" className="filter-sizes-list">
                                                 {
@@ -116,7 +118,6 @@ function FilterSidebar() {
                                                         <article className="feature">
                                                             {/* <input type="checkbox" id="feature1" /> */}
                                                             <Field type="checkbox" name="sizes" value={size.id.toString()} />
-
                                                             <div>
                                                                 <span>
                                                                     {size.value}
@@ -131,7 +132,7 @@ function FilterSidebar() {
                                         </div>
                                         <div className="filter-brends-container">
                                             <div className="filter-brends-title">
-                                                БРЕНД
+                                                {t("Shop.FiltersBrandTitle")}
                                             </div>
                                             <div className="filter-brends-list">
                                                 <div role="group" id="accordion">
@@ -178,21 +179,18 @@ function FilterSidebar() {
                                                                             </label>
                                                                         ))
                                                                     }
-
                                                                 </div>
                                                             </div>
                                                         ))
                                                     }
-
                                                 </div>
-
                                             </div>
                                         </div>
                                         <div className="filter-buttons-container">
                                             <button
                                                 type="submit"
                                                 className="filter-button filter-button-submit"
-                                            >Применить</button>
+                                            >{t("Shop.FiltersApply")}</button>
                                             <button
                                                 type="reset"
                                                 className="filter-button filter-button-clear"
@@ -204,7 +202,7 @@ function FilterSidebar() {
                                                     fetchProducts(config.API_SERVER_URL + "product")
                                                     history.push("/")
                                                 }}
-                                            >Сбросить</button>
+                                            >{t("Shop.FiltersReset")}</button>
                                         </div>
                                     </div>
                                 </nav>

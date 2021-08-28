@@ -9,8 +9,14 @@ import latvian from '../imgs/latvian.svg'
 import english from '../imgs/english.svg'
 import russian from '../imgs/russian.svg'
 import world from '../imgs/world.svg'
+import { useTranslation } from "react-i18next";
+
 
 function Header() {
+    const { t, i18n } = useTranslation();
+    const changeLanguage = (language: string | undefined) => {
+        i18n.changeLanguage(language);
+    };
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark header-wrapper">
@@ -26,10 +32,13 @@ function Header() {
                             </button> */}
                             <div className="header-lang-container dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img src={world} alt="" className=""></img>
-                                <div className="header-lang-actual">RU</div>
+                                <div className="header-lang-actual">EN</div>
                             </div>
                             <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a className="dropdown-item" href="#">
+                                <a className="dropdown-item" href="javascript:;" onClick={() => {
+                                        $(".header-lang-actual").html("LV")
+                                        changeLanguage("lv")
+                                    }}>
                                     <div className="header-langmenu-item">
                                         <div className="header-langmenu-item-icon">
                                             <img src={latvian} alt="" className="header-lang-icon-img"></img>
@@ -40,7 +49,10 @@ function Header() {
                                     </div>
                                 </a>
 
-                                <a className="dropdown-item" href="#">
+                                <a className="dropdown-item" href="javascript:;" onClick={() => {
+                                        $(".header-lang-actual").html("EN")
+                                        changeLanguage("en")
+                                    }}>
 
                                     <div className="header-langmenu-item">
                                         <div className="header-langmenu-item-icon">
@@ -52,7 +64,10 @@ function Header() {
                                     </div>
                                 </a>
 
-                                <a className="dropdown-item" href="#">
+                                <a className="dropdown-item" href="javascript:;" onClick={() => {
+                                        $(".header-lang-actual").html("RU")
+                                        changeLanguage("ru")
+                                    }}>
                                     <div className="header-langmenu-item">
                                         <div className="header-langmenu-item-icon">
                                             <img src={russian} alt="" className="header-lang-icon-img"></img>
@@ -76,19 +91,19 @@ function Header() {
                             </div>
                             <ul className="navbar-nav mb-2 mb-lg-0 header-menu" >
                                 <li className="nav-item">
-                                    <a className="nav-link header-menu-item header-menu-item-home" href="/">ГЛАВНАЯ</a>
+                                    <a className="nav-link header-menu-item header-menu-item-home" href="/">{t("Menu.Home")}</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link active header-menu-item" aria-current="page" href="/delivery">ДОСТАВКА</a>
+                                    <a className="nav-link active header-menu-item" aria-current="page" href="/delivery">{t("Menu.Delivery")}</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link header-menu-item" href="/rules">ПРАВИЛА</a>
+                                    <a className="nav-link header-menu-item" href="/rules">{t("Menu.Rules")}</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link header-menu-item" href="/reviews">ОТЗЫВЫ</a>
+                                    <a className="nav-link header-menu-item" href="/reviews">{t("Menu.Reviews")}</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link header-menu-item" href="/orders">ЗАКАЗЫ</a>
+                                    <a className="nav-link header-menu-item" href="/orders">{t("Menu.Orders")}</a>
                                 </li>
                             </ul>
                             <div className="header-soc-networks-container">
@@ -126,10 +141,13 @@ function Header() {
                             </button> */}
                                 <div className="header-lang-container dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <img src={world} alt="" className=""></img>
-                                    <div className="header-lang-actual">RU</div>
+                                    <div className="header-lang-actual">EN</div>
                                 </div>
                                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a className="dropdown-item" href="#">
+                                    <a className="dropdown-item" href="javascript:;" onClick={() => {
+                                        $(".header-lang-actual").html("LV")
+                                        changeLanguage("lv")
+                                    }}>
                                         <div className="header-langmenu-item">
                                             <div className="header-langmenu-item-icon">
                                                 <img src={latvian} alt="" className="header-lang-icon-img"></img>
@@ -140,7 +158,10 @@ function Header() {
                                         </div>
                                     </a>
 
-                                    <a className="dropdown-item" href="#">
+                                    <a className="dropdown-item" href="javascript:;" onClick={() => {
+                                        $(".header-lang-actual").html("EN")
+                                        changeLanguage("en")
+                                    }} >
 
                                         <div className="header-langmenu-item">
                                             <div className="header-langmenu-item-icon">
@@ -152,7 +173,10 @@ function Header() {
                                         </div>
                                     </a>
 
-                                    <a className="dropdown-item" href="#">
+                                    <a className="dropdown-item" href="javascript:;" onClick={() => {
+                                        $(".header-lang-actual").html("RU")
+                                        changeLanguage("ru")
+                                    }} >
                                         <div className="header-langmenu-item">
                                             <div className="header-langmenu-item-icon">
                                                 <img src={russian} alt="" className="header-lang-icon-img"></img>

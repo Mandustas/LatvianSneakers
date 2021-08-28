@@ -11,6 +11,7 @@ import config from '../config/config.json'
 import axios from 'axios'
 import { ISize } from './FilterPanel'
 import { useActions } from '../hooks/useActions'
+import { useTranslation } from 'react-i18next'
 
 export interface IGallery {
     original: string;
@@ -18,16 +19,22 @@ export interface IGallery {
 }
 
 function Product() {
+    const { t, i18n } = useTranslation();
+
     const [product, setProduct] = useState<IProduct>();
     const [gallery, setGallery] = useState<IGallery[]>([]);
     const { changeBreadcrumbs } = useActions()
     changeBreadcrumbs(product?.brandId, product?.model.id)
     let { id } = useParams<{ id: string }>();
+    const [loading, setLoading] = useState<boolean>(false);
 
     useEffect(() => {
+        setLoading(true);
         axios.get<IProduct[]>(config.API_SERVER_URL + "product?Id=" + id)
             .then(({ data }) => {
                 setProduct(data[0])
+                setLoading(false);
+
             })
     }, [id])
 
@@ -88,7 +95,7 @@ function Product() {
                             </div>
                             <div className="product-sizes-container">
                                 <div className="product-sizes-title">
-                                    ДОСТУПНЫЕ РАЗМЕРЫ
+                                    {t("Shop.AvailableSizes")}
                                 </div>
                                 <div className="product-sizes-list">
                                     {product?.sizes.map((size: ISize) => (
@@ -115,11 +122,11 @@ function Product() {
                             <div className="product-buybutton" onClick={() => {
                                 document.location.href = "https://wa.me/37122439139"
                             }}>
-                                ЗАКАЗАТЬ
+                                {t("Product.OrderBtn")}
                             </div>
                             <div className="product-buy-description">
-                                Для оформления заказа вас перекинет в WhatsApp.<br></br><br></br>
-                                Но вы можете сделать заказ через любую социальную сеть
+                                <div className="mb-4">{t("Product.WhatsAppMsg")}</div>
+                                <div className="">{t("Product.OtherSocsMsg")}</div>
                             </div>
                             <div className="product-socials-container">
                                 <div className="product-socials-item product-socials-inst-container">
@@ -143,7 +150,16 @@ function Product() {
                     </div>
                 </div>
             </div>
-
+            <div className={`overlayLoad ${loading ? "active" : null}`} ></div>
+            {
+                loading
+                    ?
+                    <div className="spinner-wrapper">
+                        <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
+                    </div>
+                    :
+                    null
+            }
         </>
     )
 }

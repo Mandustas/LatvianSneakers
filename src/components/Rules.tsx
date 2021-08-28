@@ -1,18 +1,26 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next';
 import "../components/Rules.scss"
 
 function Rules() {
+    const { t, i18n } = useTranslation();
     return (
         <>
             <div className="rules-container">
-                <div className="rules-header">Правила</div>
+                <div className="rules-header">
+                    {t("Rules.Title")}
+                </div>
                 <div className="rules-container container-fluid">
                     <div className="row">
-                        <div className="col-md-6 col-12" style={{marginBottom: "20px"}}>1. Вы прямо подтверждаете, что используете этот сайт на свой страх и риск. LATVIANSNEAKERS предоставляет этот сайт и его содержимое на условиях «как есть, так доступно» и не делает никаких заявлений о каких-либо гарантиях в отношении этого сайта или его содержимого. LATVIANSNEAKERS отказывается от всех заявлений и гарантий, включая коммерческую ценность и гарантии пригодности для определенной цели. Кроме того, LATVIANSNEAKERS не заявляет и не гарантирует, что информация или товары, представленные на этом сайте, являются точными, полными или актуальными.</div>
+                        <div className="col-md-6 col-12" style={{ marginBottom: "20px" }}>
+                            {t("Rules.Part1")}
+                        </div>
                         <div className="col-md-6 col-12">
-                            <div className="" style={{marginBottom: "20px"}}>2. Информация о продукте, цене и наличии может быть изменена в любое время без предварительного уведомления.
+                            <div className="" style={{ marginBottom: "20px" }}>
+                                {t("Rules.Part2")}
                             </div>
-                            <div className="" style={{marginBottom: "20px"}}>3. Возврата денежных средств, а так же замена размера не предусмотрена и невозможна.
+                            <div className="" style={{ marginBottom: "20px" }}>
+                                {t("Rules.Part3")}
                             </div>
                         </div>
                     </div>

@@ -7,6 +7,7 @@ import { useTypedSelector } from '../hooks/useTypedSelector';
 import { useActions } from '../hooks/useActions';
 import { IModel } from './HeaderBrends';
 import "./spinner.css"
+import { useTranslation } from 'react-i18next';
 
 export interface Brand {
     id: number;
@@ -44,6 +45,7 @@ export interface IProduct {
 
 
 function ShopList() {
+    const { t, i18n } = useTranslation();
     let { brandid, modelid } = useParams<{ brandid: string, modelid: string }>();
     // const [products, setProducts] = useState<IProduct[]>([]);
     const { products, error, loading } = useTypedSelector(state => state.products)
@@ -76,7 +78,7 @@ function ShopList() {
                                 <ShopItem key={product.id} id={product.id} title={product.title} brand={product.brand.title} isNew={product.isNew} isPopular={product.isPopular} isSale={product.isSale} price={product.price} discount={product.discount} image={product.images[0]?.path}></ShopItem>
                             ))
                             :
-                            "Товары по выбранному фильтру не найдены"
+                            !loading && t("Shop.NotFound")
                     }
                 </div>
             </div>

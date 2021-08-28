@@ -7,6 +7,7 @@ import "./FilterPanel.scss"
 import { IBrand, IModel } from './HeaderBrends';
 import { useActions } from '../hooks/useActions';
 import { useHistory } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export interface ISize {
     id: number;
@@ -20,6 +21,8 @@ $(document).on('click', '.filter-brands-radio', function () {
 });
 
 function FilterPanel() {
+    const { t, i18n } = useTranslation();
+
     const [sizes, setSizes] = useState<ISize[]>([]);
     const [brands, setBrands] = useState<IBrand[]>([]);
     const { fetchProducts, changeBreadcrumbs } = useActions()
@@ -78,12 +81,12 @@ function FilterPanel() {
                             <div className="filter-wrapper">
                                 <div className="filter-container">
                                     <div className="filter-title">
-                                        Фильтры
+                                        {t("Shop.FiltersTitle")}
                                         <i className="fa fa-filter filter-title-icon"></i>
                                     </div>
                                     <div className="filter-sizes-container">
                                         <div className="filter-sizes-title">
-                                            РАЗМЕР
+                                            {t("Shop.FiltersSizeTitle")}
                                         </div>
                                         <div role="group" aria-labelledby="checkbox-group" className="filter-sizes-list">
                                             {
@@ -106,7 +109,7 @@ function FilterPanel() {
                                     </div>
                                     <div className="filter-brends-container">
                                         <div className="filter-brends-title">
-                                            БРЕНД
+                                            {t("Shop.FiltersBrandTitle")}
                                         </div>
                                         <div className="filter-brends-list">
                                             <div role="group" id="accordion">
@@ -168,7 +171,7 @@ function FilterPanel() {
                                         <button
                                             type="submit"
                                             className="filter-button filter-button-submit"
-                                        >Применить</button>
+                                        >{t("Shop.FiltersApply")}</button>
                                         <button
                                             type="reset"
                                             className="filter-button filter-button-clear"
@@ -177,7 +180,7 @@ function FilterPanel() {
                                                 fetchProducts(config.API_SERVER_URL + "product")
                                                 history.push("/")
                                             }}
-                                        >Сбросить</button>
+                                        >{t("Shop.FiltersReset")}</button>
                                     </div>
                                 </div>
                             </div>
