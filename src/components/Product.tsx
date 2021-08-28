@@ -73,9 +73,15 @@ function Product() {
                         </div>
                         <div className="col-lg-7 col-md-12">
                             <div className="product-sticker-block">
-                                <div className="product-sticker-block popular">POPULAR</div>
-                                <div className="product-sticker-block new">NEW</div>
-                                <div className="product-sticker-block sale">SALE</div>
+                                {
+                                    product?.isPopular && <div className="product-sticker-block popular">POPULAR</div>
+                                }
+                                {
+                                    product?.isNew && <div className="product-sticker-block new">NEW</div>
+                                }
+                                {
+                                    product?.isSale && <div className="product-sticker-block sale">SALE</div>
+                                }
                             </div>
                             <div className="product-title">
                                 {product?.title}

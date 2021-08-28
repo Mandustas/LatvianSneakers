@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import { useActions } from '../hooks/useActions';
 import { IModel } from './HeaderBrends';
-
+import "./spinner.css"
 
 export interface Brand {
     id: number;
@@ -80,6 +80,17 @@ function ShopList() {
                     }
                 </div>
             </div>
+            <div className={`overlayLoad ${loading ? "active" : null}`} ></div>
+
+            {
+                loading
+                    ?
+                    <div className="spinner-wrapper">
+                        <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
+                    </div>
+                    :
+                    null
+            }
         </>
     )
 }

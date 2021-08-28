@@ -9,7 +9,9 @@ export const fetchProducts = (url: string) => {
     return async (dispatch: Dispatch<ProductsAction>) => {
         try {
             dispatch({ type: ProductsActionTypes.FETCH_PRODUCTS })
-
+            setTimeout(() => {
+                
+            }, 1000);
             const responseProducts = await axios.get(url)
             dispatch({ type: ProductsActionTypes.FETCH_PRODUCTS_SUCCESS, payloadProducts: responseProducts.data })
         } catch (error) {

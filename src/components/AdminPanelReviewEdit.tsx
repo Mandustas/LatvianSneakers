@@ -86,7 +86,7 @@ function AdminPanelReviewEdit() {
                                                 <input
                                                     type={`text`}
                                                     className="form-control border border-dark"
-                                                    placeholder="Введите название модели"
+                                                    placeholder="Введите ссылку на изображение"
                                                     name={`path`}
                                                     onChange={handleChange}
                                                     onBlur={handleBlur}

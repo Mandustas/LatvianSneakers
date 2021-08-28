@@ -4,6 +4,7 @@ import ModalOrder from './ModalOrder'
 import "../components/Orders.scss"
 import config from '../config/config.json'
 import axios from 'axios'
+import "./spinner.css"
 
 export interface IOrderImage {
     id: number;
@@ -17,18 +18,21 @@ export interface IOrder {
 }
 
 function Orders() {
-    function ModalOrderOpen(images:IOrderImage[]) {
+    function ModalOrderOpen(images: IOrderImage[]) {
         setImgs(images)
         $("#ModalOrder").modal('show')
     }
 
     const [orders, setOrders] = useState<IOrder[]>([]);
     const [imgs, setImgs] = useState<IOrderImage[]>([]);
+    const [loading, setLoading] = useState<boolean>(false);
 
     useEffect(() => {
+        setLoading(true)
         axios.get<IOrder[]>(config.API_SERVER_URL + "order")
             .then(({ data }) => {
                 setOrders(data)
+                setLoading(false)
             })
     }, [])
 
@@ -36,7 +40,7 @@ function Orders() {
         <>
             <div className="orders-container">
                 <div className="orders-header">
-                    Отзывы
+                    Заказы
                 </div>
                 <div className="orders-list container-fluid">
                     <div className="row">
@@ -52,6 +56,17 @@ function Orders() {
                 </div>
             </div>
             <ModalOrder images={imgs}></ModalOrder>
+
+            <div className={`overlayLoad ${loading ? "active" : null}`} ></div>
+            {
+                loading
+                    ?
+                    <div className="spinner-wrapper">
+                        <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
+                    </div>
+                    :
+                    null
+            }
         </>
     )
 }

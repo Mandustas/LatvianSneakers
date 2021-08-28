@@ -6,6 +6,7 @@ import * as yup from 'yup'
 import "./FilterPanel.scss"
 import { IBrand, IModel } from './HeaderBrends';
 import { useActions } from '../hooks/useActions';
+import { useHistory } from 'react-router-dom';
 
 export interface ISize {
     id: number;
@@ -22,6 +23,7 @@ function FilterPanel() {
     const [sizes, setSizes] = useState<ISize[]>([]);
     const [brands, setBrands] = useState<IBrand[]>([]);
     const { fetchProducts, changeBreadcrumbs } = useActions()
+    let history = useHistory()
 
     useEffect(() => {
         axios.get<ISize[]>(config.API_SERVER_URL + "size")
@@ -173,6 +175,7 @@ function FilterPanel() {
                                             onClick={() => {
                                                 $(".filter-brands-radio").removeClass("filter-brands-selected")
                                                 fetchProducts(config.API_SERVER_URL + "product")
+                                                history.push("/")
                                             }}
                                         >Сбросить</button>
                                     </div>

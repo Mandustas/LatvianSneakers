@@ -207,13 +207,6 @@ function App() {
               </Route>
             </Switch>
 
-
-            {/* <Home></Home> */}
-            {/* <Product></Product> */}
-            {/* <Reviews></Reviews> */}
-            {/* <Orders></Orders> */}
-            {/* <Rules></Rules> */}
-            {/* <Delivery></Delivery> */}
           </div>
         </div>
       </Router>

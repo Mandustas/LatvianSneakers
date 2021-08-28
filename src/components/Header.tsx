@@ -35,7 +35,7 @@ function Header() {
                                             <img src={latvian} alt="" className="header-lang-icon-img"></img>
                                         </div>
                                         <div className="header-langmenu-item-country">
-                                            Latvija
+                                            LV
                                         </div>
                                     </div>
                                 </a>
@@ -47,7 +47,7 @@ function Header() {
                                             <img src={english} alt="" className="header-lang-icon-img"></img>
                                         </div>
                                         <div className="header-langmenu-item-country">
-                                            English
+                                            EN
                                         </div>
                                     </div>
                                 </a>
@@ -58,7 +58,7 @@ function Header() {
                                             <img src={russian} alt="" className="header-lang-icon-img"></img>
                                         </div>
                                         <div className="header-langmenu-item-country">
-                                            Russian
+                                            RU
                                         </div>
                                     </div>
                                 </a>
@@ -108,7 +108,7 @@ function Header() {
                                         <img src={mail} alt="" className="header-contacts-icon-img"></img>
                                     </div>
                                     <div className=" header-contacts-address">
-                                        <a style={{ textDecoration: "none", color: " lightgray" }} href="mailto:pochta@email.com">pochta@email.com</a>
+                                        <a style={{ textDecoration: "none", color: " lightgray" }} href="mailto:pochta@email.com">latviansneakers777@gmail.com</a>
                                     </div>
                                 </div>
                                 <div className="header-contacts-line-containter">
@@ -116,7 +116,7 @@ function Header() {
                                         <img src={phone} alt="" className="header-contacts-icon-img"></img>
                                     </div>
                                     <div className=" header-contacts-address">
-                                        <a style={{ textDecoration: "none", color: " lightgray" }} href="tel:3 128 371 28 31">3 128 371 28 31</a>
+                                        <a style={{ textDecoration: "none", color: " lightgray" }} href="tel:+37122439139">+371 22439139</a>
                                     </div>
                                 </div>
                             </div>
@@ -135,7 +135,7 @@ function Header() {
                                                 <img src={latvian} alt="" className="header-lang-icon-img"></img>
                                             </div>
                                             <div className="header-langmenu-item-country">
-                                                Latvija
+                                                LV
                                             </div>
                                         </div>
                                     </a>
@@ -147,7 +147,7 @@ function Header() {
                                                 <img src={english} alt="" className="header-lang-icon-img"></img>
                                             </div>
                                             <div className="header-langmenu-item-country">
-                                                English
+                                                EN
                                             </div>
                                         </div>
                                     </a>
@@ -158,7 +158,7 @@ function Header() {
                                                 <img src={russian} alt="" className="header-lang-icon-img"></img>
                                             </div>
                                             <div className="header-langmenu-item-country">
-                                                Russian
+                                                RU
                                             </div>
                                         </div>
                                     </a>

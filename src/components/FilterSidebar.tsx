@@ -9,6 +9,7 @@ import { Field, Form, Formik } from 'formik';
 import config from '../config/config.json'
 import * as yup from 'yup'
 import { ISize } from './FilterPanel';
+import { useHistory } from 'react-router-dom';
 
 
 $(document).on('click', '.filter-brands-radio', function () {
@@ -19,6 +20,8 @@ $(document).on('click', '.filter-brands-radio', function () {
 });
 
 function FilterSidebar() {
+    let history = useHistory()
+
     useEffect(() => {
         $('#dismiss, .overlay').on('click', function () {
             // hide sidebar
@@ -199,6 +202,7 @@ function FilterSidebar() {
                                                     // hide overlay
                                                     $('.overlay').removeClass('active');
                                                     fetchProducts(config.API_SERVER_URL + "product")
+                                                    history.push("/")
                                                 }}
                                             >Сбросить</button>
                                         </div>

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import "../components/Reviews.scss"
 import ModalReview from './ModalReview'
 import config from '../config/config.json'
+import "./spinner.css"
 
 export interface IReview {
     id: number;
@@ -12,16 +13,18 @@ export interface IReview {
 function Reviews() {
     const [reviews, setReviews] = useState<IReview[]>();
     const [modalpath, setModalPath] = useState<string>("");
-
+    const [loading, setLoading] = useState<boolean>(false);
 
     function ModalReviewOpen(path: string) {
         setModalPath(path)
         $("#ModalReview").modal('show')
     }
     useEffect(() => {
+        setLoading(true);
         axios.get<IReview[]>(config.API_SERVER_URL + "review")
             .then(({ data }) => {
                 setReviews(data)
+                setLoading(false)
             })
     }, [])
 
@@ -46,7 +49,16 @@ function Reviews() {
                 </div>
             </div>
             <ModalReview path={modalpath}></ModalReview>
-
+            <div className={`overlayLoad ${loading ? "active" : null}`} ></div>
+            {
+                loading
+                    ?
+                    <div className="spinner-wrapper">
+                        <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
+                    </div>
+                    :
+                    null
+            }
         </>
     )
 }

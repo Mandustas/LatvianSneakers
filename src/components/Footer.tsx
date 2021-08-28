@@ -1,6 +1,6 @@
 import React from 'react'
 import "./Footer.scss"
-import logo from '../imgs/logo.svg'
+import logo from '../imgs/watermark_white.png'
 import tg from '../imgs/tg.svg'
 import inst from '../imgs/inst.svg'
 import whatsup from '../imgs/whatsup.svg'
