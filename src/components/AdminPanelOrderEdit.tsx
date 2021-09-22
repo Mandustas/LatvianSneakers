@@ -72,7 +72,6 @@ function AdminPanelOrderEdit() {
                     <div className="col-8">
                         <nav className="navbar navbar-light" style={{ marginTop: "7px" }}>
                             <a className="navbar-brand"> {id != undefined ? "ОБНОВИТЬ ЗАКАЗ" : "ДОБАВИТЬ ЗАКАЗ"}</a>
-
                         </nav>
                         <Formik
                             enableReinitialize

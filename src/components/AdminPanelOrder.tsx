@@ -48,7 +48,7 @@ function AdminPanelOrder() {
                                 {
                                     orders?.map((order: IOrder) => (
                                         <div className="orders-item col-md-4 col-6 mb-4" data-bs-toggle="modal" data-bs-target="#ModalOrder" >
-                                            <img className="orders-item-preview" src={order.images[0].path} alt="item" onClick={() => ModalOrderOpen(order.images)} />
+                                            <img className="orders-item-preview" src={order.images[0]?.path} alt="item" onClick={() => ModalOrderOpen(order.images)} />
                                             <div className="adminbrand-buttons">
                                                 <button className="btn adminbrand-edit" onClick={() => {
                                                     history.push("/adminpanel-order-edit/" + order.id)
@@ -71,7 +71,6 @@ function AdminPanelOrder() {
                                         </div>
                                     ))
                                 }
-
                             </div>
                         </div>
 

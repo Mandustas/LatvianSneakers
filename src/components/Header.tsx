@@ -36,9 +36,11 @@ function Header() {
                             </div>
                             <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a className="dropdown-item" href="javascript:;" onClick={() => {
-                                        $(".header-lang-actual").html("LV")
-                                        changeLanguage("lv")
-                                    }}>
+                                    localStorage.setItem('lang', "lv");
+                                    $(".header-lang-actual").html("LV")
+                                    changeLanguage("lv")
+                                    document.location.href = "/"
+                                }}>
                                     <div className="header-langmenu-item">
                                         <div className="header-langmenu-item-icon">
                                             <img src={latvian} alt="" className="header-lang-icon-img"></img>
@@ -50,9 +52,11 @@ function Header() {
                                 </a>
 
                                 <a className="dropdown-item" href="javascript:;" onClick={() => {
-                                        $(".header-lang-actual").html("EN")
-                                        changeLanguage("en")
-                                    }}>
+                                    localStorage.setItem('lang', "en");
+                                    $(".header-lang-actual").html("EN")
+                                    changeLanguage("en")
+                                    document.location.href = "/"
+                                }}>
 
                                     <div className="header-langmenu-item">
                                         <div className="header-langmenu-item-icon">
@@ -65,9 +69,11 @@ function Header() {
                                 </a>
 
                                 <a className="dropdown-item" href="javascript:;" onClick={() => {
-                                        $(".header-lang-actual").html("RU")
-                                        changeLanguage("ru")
-                                    }}>
+                                    localStorage.setItem('lang', "ru");
+                                    $(".header-lang-actual").html("RU")
+                                    changeLanguage("ru")
+                                    document.location.href = "/"
+                                }}>
                                     <div className="header-langmenu-item">
                                         <div className="header-langmenu-item-icon">
                                             <img src={russian} alt="" className="header-lang-icon-img"></img>
@@ -145,8 +151,10 @@ function Header() {
                                 </div>
                                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a className="dropdown-item" href="javascript:;" onClick={() => {
+                                        localStorage.setItem('lang', "lv");
                                         $(".header-lang-actual").html("LV")
                                         changeLanguage("lv")
+                                        document.location.href = "/"
                                     }}>
                                         <div className="header-langmenu-item">
                                             <div className="header-langmenu-item-icon">
@@ -159,8 +167,10 @@ function Header() {
                                     </a>
 
                                     <a className="dropdown-item" href="javascript:;" onClick={() => {
+                                        localStorage.setItem('lang', "en");
                                         $(".header-lang-actual").html("EN")
                                         changeLanguage("en")
+                                        document.location.href = "/"
                                     }} >
 
                                         <div className="header-langmenu-item">
@@ -174,8 +184,10 @@ function Header() {
                                     </a>
 
                                     <a className="dropdown-item" href="javascript:;" onClick={() => {
+                                        localStorage.setItem('lang', "ru");
                                         $(".header-lang-actual").html("RU")
                                         changeLanguage("ru")
+                                        document.location.href = "/"
                                     }} >
                                         <div className="header-langmenu-item">
                                             <div className="header-langmenu-item-icon">

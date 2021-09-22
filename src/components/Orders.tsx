@@ -47,11 +47,13 @@ function Orders() {
                 <div className="orders-list container-fluid">
                     <div className="row">
                         {
-                            orders.map((order: IOrder) => (
-                                <div className="orders-item col-md-3 col-6 mb-4" data-bs-toggle="modal" data-bs-target="#ModalOrder" onClick={() => ModalOrderOpen(order.images)}>
-                                    <img className="orders-item-preview" src={order.images[0].path} alt="item" />
-                                </div>
-                            ))
+                            orders.length != 0 ?
+                                orders.map((order: IOrder) => (
+                                    <div className="orders-item col-md-3 col-6 mb-4" data-bs-toggle="modal" data-bs-target="#ModalOrder" onClick={() => ModalOrderOpen(order.images)}>
+                                        <img className="orders-item-preview" src={order.images[0]?.path} alt="item" />
+                                    </div>
+                                ))
+                                : null
                         }
 
                     </div>

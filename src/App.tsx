@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./App.css"
 import Delivery from './components/Delivery'
 import Footer from './components/Footer'
@@ -31,10 +31,32 @@ import AdminPanelOrder from './components/AdminPanelOrder'
 import AdminPanelOrderEdit from './components/AdminPanelOrderEdit'
 import AdminPanelProduct from './components/AdminPanelProduct'
 import AdminPanelProductEdit from './components/AdminPanelProductEdit'
+import { useTranslation } from 'react-i18next'
 
 function App() {
+  const { t, i18n } = useTranslation();
+  const changeLanguage = (language: string | undefined) => {
+    i18n.changeLanguage(language);
+  };
   const { isAuth } = useTypedSelector(state => state.auth)
   const auth = localStorage.getItem("token") != null ? true : false
+  useEffect(() => {
+    const lang = localStorage.getItem('lang');
+    if (lang != "en" && lang != "ru" && lang != "lv") {
+      $(".header-lang-actual").html("EN")
+      changeLanguage("en")
+    } else if (lang === "en") {
+      $(".header-lang-actual").html("EN")
+      changeLanguage("en")
+    } else if (lang === "ru") {
+      $(".header-lang-actual").html("RU")
+      changeLanguage("ru")
+    } else if (lang === "lv") {
+      $(".header-lang-actual").html("LV")
+      changeLanguage("lv")
+    }
+  }, [])
+
 
 
   return (
@@ -110,7 +132,7 @@ function App() {
                     <AdminPanelBannerEdit></AdminPanelBannerEdit>
                 }
               </Route>
-              
+
               <Route
                 path="/adminpanel-brand">
                 {

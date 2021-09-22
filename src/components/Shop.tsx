@@ -82,7 +82,7 @@ function Shop() {
                         <div className="shop-buttons-container">
                             <button id="sidebarCollapse" className="shop-button shop-button-submit">
                                 <i className="fa fa-filter filter-title-icon"></i>
-                                Фильтр товаров
+                                {t("Shop.FiltersTitle")}
                             </button>
                             <button className="shop-button shop-button-clear sort-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <div className="sort-button-text">

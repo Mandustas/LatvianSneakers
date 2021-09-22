@@ -7,14 +7,30 @@ export interface IBanner {
     id: number;
     path: string;
     order: number;
+    langId: number;
 }
 
 function Carousel() {
     const [banners, setBanners] = useState<IBanner[]>([]);
+    const lang = localStorage.getItem('lang');
+    let langid = 0;
+    if (lang != "en" && lang != "ru" && lang != "lv") {
+        langid = 1
+    } else if (lang === "en") {
+        langid = 1
+    } else if (lang === "ru") {
+        $(".header-lang-actual").html("RU")
+        langid = 2
+    } else if (lang === "lv") {
+        $(".header-lang-actual").html("LV")
+        langid = 3
+    }
+
     useEffect(() => {
         axios.get<IBanner[]>(config.API_SERVER_URL + "banner")
             .then(({ data }) => {
-                setBanners(data)
+                const result = data.filter(data => data.langId === langid)
+                setBanners(result)
             })
     }, [])
 
@@ -23,9 +39,11 @@ function Carousel() {
         <>
             <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
                 <ol className="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    {
+                        banners.map((banner: IBanner, index) => (
+                            <li data-target="#carouselExampleIndicators" data-slide-to={index} className={index == 0 ? "active" : ""}></li>
+                        ))
+                    }
                 </ol>
                 <div className="carousel-inner">
                     {

@@ -26,12 +26,14 @@ function AdminPanelBannerEdit() {
     }, [id])
     let initialValues = {
         path: "",
-        order: 0
+        order: 0,
+        langId: 0
     }
     if (banner != undefined && id != undefined) {
         initialValues = {
             path: banner.path,
-            order: banner.order
+            order: banner.order,
+            langId: banner.langId
         }
     }
 
@@ -52,6 +54,10 @@ function AdminPanelBannerEdit() {
                             initialValues={initialValues}
                             validateOnBlur
                             onSubmit={async (values) => {
+                                if (values.langId == 0) {
+                                    alert("Выберите язык")
+                                    return
+                                }
                                 let axiosConfig = {
                                     headers: {
                                         'Content-Type': 'application/json;charset=UTF-8',
@@ -117,6 +123,21 @@ function AdminPanelBannerEdit() {
                                                 >
                                                 </input>
                                                 {touched.order && errors.order && <p className="form-error-msg">{errors.order}</p>}
+                                                <br />
+
+                                                <select
+                                                    className="form-control border border-dark"
+                                                    placeholder="Укажите язык"
+                                                    name={`langId`}
+                                                    onChange={handleChange}
+                                                    onBlur={handleBlur}
+                                                    value={values.langId}
+                                                >
+                                                    <option value="0">Выберите язык...</option>
+                                                    <option value="1">en</option>
+                                                    <option value="2">ru</option>
+                                                    <option value="3">lv</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div className="modal-footer">
@@ -125,7 +146,7 @@ function AdminPanelBannerEdit() {
                                                 className="btn btn-dark"
                                                 disabled={!isValid && !dirty}
                                             >
-                                                { id != undefined ? "ОБНОВИТЬ" : "ДОБАВИТЬ" }
+                                                {id != undefined ? "ОБНОВИТЬ" : "ДОБАВИТЬ"}
                                             </button>
                                         </div>
                                     </Form>
