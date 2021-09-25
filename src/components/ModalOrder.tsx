@@ -28,7 +28,7 @@ function ModalOrder({ images }: ModalOrderProps) {
     }, [images])
 
     return (
-        <div id="ModalOrder" style={{ display: "none" }} className="modal fade modal-dialog-scrollable" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div id="ModalOrder" style={{ display: "none", paddingTop: "90px" }} className="modal fade modal-dialog-scrollable" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog modal-order-container">
                 <div className="modal-content">
                     {/* <ImageGallery

@@ -14,8 +14,8 @@ function ModalReview({ path }: ModalProps) {
         //     </div>
         // </div>
 
-        <div id="ModalReview" style={{ display: "none" }} className="modal fade modal-dialog-scrollable" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog" style={{ padding: "51px" }}>
+        <div id="ModalReview" style={{ display: "none", paddingTop:"60px" }} className="modal fade modal-dialog-scrollable" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-dialog">
                 <div className="modal-content">
                     <img src={path} alt="" />
                 </div>

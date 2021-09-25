@@ -17,6 +17,7 @@ function AdminPanelProductEdit() {
 
     let { id } = useParams<{ id: string }>();
 
+    const [isAllCheck, setIsAllCheck] = useState(false);
     const [product, setProduct] = useState<IProduct>();
     const [sizesProd, setSizesProd] = useState<string[]>([]);
     const [images, setImages] = useState<string[]>();
@@ -47,6 +48,22 @@ function AdminPanelProductEdit() {
         }
     }, [id])
 
+    const changeAll = () => {
+        setIsAllCheck(!isAllCheck)
+    };
+
+    // useEffect(() => {
+    //     if (isAllCheck) {
+    //         sizes.forEach((size, i) => {
+    //             $('#Checkbox' + i).prop('checked', true);
+    //         });
+    //     } else {
+    //         sizes.forEach((size, i) => {
+    //             $('#Checkbox' + i).prop('checked', false);
+    //         });
+    //     }
+    // }, [isAllCheck])
+
     useEffect(() => {
         if (id != undefined) {
             const temp = product?.brandId != undefined ? product?.brandId.toString() : ""
@@ -54,33 +71,14 @@ function AdminPanelProductEdit() {
                 .then(({ data }) => {
                     setModels(data)
                 })
-
         }
-        // axios.get<IModel[]>(config.API_SERVER_URL + "model")
-        //     .then(({ data }) => {
-        //         setModels(data)
-        //     })
-
     }, [product])
 
-
-
-    let sizesChecked: boolean[] = [];
     sizes.forEach((size, i) => {
-        // $('#Checkbox' + i).prop('checked', false);
-        // sizesChecked.push(product?.sizes.indexOf(size) !== -1)
         if (product?.sizes.find(x => x.id == size.id)) {
             $('#Checkbox' + i).prop('checked', true);
-            console.log('#Checkbox' + i);
-
-            // sizesChecked.push(true)
-        } else {
-            // sizesChecked.push(false)
         }
     });
-    console.log(sizesChecked);
-
-
 
     let sizesProduct: string[] = [];
     product?.sizes.forEach(s => {
@@ -104,7 +102,6 @@ function AdminPanelProductEdit() {
         "modelId": 0,
         "sizes": [""],
         "images": [""]
-
     }
 
 
@@ -112,7 +109,6 @@ function AdminPanelProductEdit() {
         setSizesProd(sizesProduct)
         setImages(imgs)
     }, [product])
-    console.log(sizesProd);
 
     if (product != undefined && id != undefined) {
         initialValues = {
@@ -125,20 +121,10 @@ function AdminPanelProductEdit() {
             "brandId": product.brandId,
             "modelId": product.modelId != undefined ? product.modelId : 0,
             "sizes": sizesProd,
-            // "sizes": sizesProd != undefined ? sizesProd : [],
             "images": images != undefined ? images : [],
-
-            // path: imgs != undefined ? imgs : [],
-            // isVideo: isvideoarr != undefined ? isvideoarr : []
         }
     }
     console.log(initialValues);
-
-    // sizesProd.forEach((element, i) => {
-    //     $('#Checkbox' + i).prop('checked', element);
-
-    // });
-
 
     return (
         <>
@@ -157,24 +143,19 @@ function AdminPanelProductEdit() {
                             initialValues={initialValues}
                             validateOnBlur
                             onSubmit={async (values) => {
-                                // alert(JSON.stringify(values, null, 2));
-                                values.sizes = values.sizes.filter(s => s != "");
-                                // alert(JSON.stringify(values, null, 2));
+                                if (isAllCheck) {
+                                    values.sizes = sizes.map((size) => size.id.toString());
+                                    console.log(JSON.stringify(values.sizes));
+                                    
+                                } else {
+                                    values.sizes = values.sizes.filter(s => s != "");
+                                    console.log(JSON.stringify(values.sizes));
+                                }
                                 if (values.images.length == 0) {
                                     alert("Добавьте хотя бы одно изображение")
+
                                     return
                                 }
-                                // let body: IBody[] = []
-                                // values.path.forEach((val, i) => {
-                                //     body.push({
-                                //         path: val,
-                                //         isVideo: values.isVideo[i]
-                                //     })
-                                // });
-                                // let images = {
-                                //     "images": body
-                                // }
-
                                 if (id != undefined && product != undefined) {
                                     try {
                                         await axios.put(config.API_SERVER_URL + 'product/' + id, values, axiosConfig)
@@ -304,21 +285,7 @@ function AdminPanelProductEdit() {
                                                     }
                                                 </select>
                                                 {touched.price && errors.price && <p className="form-error-msg">{errors.title}</p>}
-
-
                                                 <br />
-                                                {/* <label>
-                                                    <input
-                                                        type={`checkbox`}
-                                                        className="form-control border border-dark"
-                                                        placeholder="Скидка?"
-                                                        name={`isSale`}
-                                                        onChange={handleChange}
-                                                        onBlur={handleBlur}
-                                                        value={values.isSale}
-                                                    ></input>
-                                                    Скидка
-                                                </label> */}
                                                 <div>Теги</div>
 
                                                 <div className="checboxes-product row">
@@ -344,21 +311,17 @@ function AdminPanelProductEdit() {
                                                     Размеры:
                                                 </div>
                                                 <div className="sizes-products row">
+                                                    <label className="col-4">
+                                                        <input type="checkbox"
+                                                            name="allSizes"
+                                                            id={"AllCheckbox"}
+                                                            onChange={() => changeAll()}
+                                                        />
+                                                        Все размеры
+                                                    </label>
                                                     {
                                                         sizes.map((size: ISize, i) => (
                                                             <label className="col-4">
-
-                                                                {/* <Field
-                                                                    // checked={
-                                                                    //     sizesChecked[i]
-                                                                    // }
-                                                                    type="checkbox"
-                                                                    name={"sizes"}
-                                                                    value={size.id.toString()}
-                                                                    id={"Checkbox" + i}
-                                                                    // onChange={handleChange}
-                                                                    // checked={sizesProd[i]}
-                                                                /> */}
                                                                 <input type="checkbox"
                                                                     name="sizes"
                                                                     id={"Checkbox" + i}
@@ -407,7 +370,6 @@ function AdminPanelProductEdit() {
                                                                 ))
                                                             ) : (
                                                                 <button className="btn" type="button" onClick={() => arrayHelpers.push("")}>
-                                                                    {/* show this when user has removed all friends from the list */}
                                                                     Добавить изображение
                                                                 </button>
                                                             )}

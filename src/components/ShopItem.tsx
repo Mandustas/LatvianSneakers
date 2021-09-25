@@ -22,9 +22,8 @@ function ShopItem({ id, title, image, brand, isNew, isPopular, isSale, price, di
     return (
         <>
             <div className="col-lg-4 col-6 " style={{ padding: "0px 5px 0px 5px" }}>
-                <div className="card shop-item-card-containter" onClick={() => {
-                    history.push("/product/" + id)
-                }}>
+                
+                <a href={"/product/" + id} className="card shop-item-card-containter">
                     {
                         isSale ?
                             <div className="shop-item-card-sticker sale">
@@ -70,7 +69,7 @@ function ShopItem({ id, title, image, brand, isNew, isPopular, isSale, price, di
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         </>
     )
