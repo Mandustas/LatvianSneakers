@@ -5,21 +5,36 @@ import ModalReview from './ModalReview'
 import config from '../config/config.json'
 import "./spinner.css"
 import { useTranslation } from 'react-i18next'
+import Modal from '@material-ui/core/Modal';
+import Box from '@material-ui/core/Box';
 
 export interface IReview {
     id: number;
     path: string;
 }
-
+const styles = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+};
 function Reviews() {
     const { t, i18n } = useTranslation();
     const [reviews, setReviews] = useState<IReview[]>();
     const [modalpath, setModalPath] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(false);
+    const [isOpen, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
     function ModalReviewOpen(path: string) {
         setModalPath(path)
-        $("#ModalReview").modal('show')
+        handleOpen()
     }
     useEffect(() => {
         setLoading(true);
@@ -50,7 +65,23 @@ function Reviews() {
                     </div>
                 </div>
             </div>
-            <ModalReview path={modalpath}></ModalReview>
+            {/* <ModalReview path={modalpath}></ModalReview> */}
+
+            <Modal
+                onClose={handleClose}
+                open={isOpen}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <div className="modal-wrapper" onClick={handleClose}>
+                    <div className="modal-container">
+                        <img src={modalpath} alt="" />
+                    </div>
+
+                </div>
+            </Modal>
+
+
             <div className={`overlayLoad ${loading ? "active" : null}`} ></div>
             {
                 loading

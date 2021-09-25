@@ -1,3 +1,4 @@
+import { Box, Modal } from '@material-ui/core'
 import React from 'react'
 
 export interface ModalProps {
@@ -14,13 +15,16 @@ function ModalReview({ path }: ModalProps) {
         //     </div>
         // </div>
 
-        <div id="ModalReview" style={{ display: "none", paddingTop:"60px" }} className="modal fade modal-dialog-scrollable" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog">
-                <div className="modal-content">
-                    <img src={path} alt="" />
-                </div>
-            </div>
-        </div>
+        // <div id="ModalReview" style={{ display: "none", paddingTop:"60px" }} className="modal fade modal-dialog-scrollable" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        //     <div className="modal-dialog">
+        //         <div className="modal-content">
+        //             <img src={path} alt="" />
+        //         </div>
+        //     </div>
+        // </div>
+
+
+        <div className=""></div>
     )
 }
 
